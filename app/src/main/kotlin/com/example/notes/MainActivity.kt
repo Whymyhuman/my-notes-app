@@ -94,6 +94,12 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
             val intent = Intent(this, AddEditNoteActivity::class.java)
             startActivityForResult(intent, REQUEST_ADD_NOTE)
         }
+        
+        // Setup empty state button
+        binding.btnCreateFirstNote?.setOnClickListener {
+            val intent = Intent(this, AddEditNoteActivity::class.java)
+            startActivityForResult(intent, REQUEST_ADD_NOTE)
+        }
     }
     
     private fun observeNotes() {
@@ -148,4 +154,3 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
         popup.show()
     }
 }
-

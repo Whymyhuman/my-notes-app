@@ -8,19 +8,54 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    <!-- Custom colors for notes app -->
-    <color name="background_light">#FFF8F8F8</color>
-    <color name="background_dark">#FF121212</color>
+    <!-- Modern color palette for notes app -->
+    <color name="background_light">#FFF7F8FC</color>
+    <color name="background_dark">#FF0F0F23</color>
     <color name="card_background_light">#FFFFFFFF</color>
-    <color name="card_background_dark">#FF1E1E1E</color>
-    <color name="text_primary_light">#FF212121</color>
+    <color name="card_background_dark">#FF1A1A2E</color>
+    <color name="text_primary_light">#FF1A1A2E</color>
     <color name="text_primary_dark">#FFFFFFFF</color>
-    <color name="text_secondary_light">#FF757575</color>
-    <color name="text_secondary_dark">#FFBDBDBD</color>
-    <color name="accent_blue">#FF6366F1</color>
-    <color name="accent_orange">#FFFF9500</color>
-    <color name="search_background">#FFF5F5F5</color>
-    <color name="divider_light">#FFE0E0E0</color>
-    <color name="divider_dark">#FF2C2C2C</color>
+    <color name="text_secondary_light">#FF6B7280</color>
+    <color name="text_secondary_dark">#FF9CA3AF</color>
+    
+    <!-- Modern accent colors -->
+    <color name="accent_primary">#FF6366F1</color>
+    <color name="accent_secondary">#FF8B5CF6</color>
+    <color name="accent_tertiary">#FFEC4899</color>
+    <color name="accent_success">#FF10B981</color>
+    <color name="accent_warning">#FFF59E0B</color>
+    <color name="accent_error">#FFEF4444</color>
+    
+    <!-- Gradient colors -->
+    <color name="gradient_start">#FF667EEA</color>
+    <color name="gradient_end">#FF764BA2</color>
+    <color name="gradient_card_start">#FFFFECD2</color>
+    <color name="gradient_card_end">#FFFCB69F</color>
+    
+    <!-- Surface colors -->
+    <color name="surface_light">#FFFFFFFF</color>
+    <color name="surface_dark">#FF16213E</color>
+    <color name="surface_variant_light">#FFF1F5F9</color>
+    <color name="surface_variant_dark">#FF1E293B</color>
+    
+    <!-- Search and interaction colors -->
+    <color name="search_background">#FFF8FAFC</color>
+    <color name="search_background_dark">#FF1E293B</color>
+    <color name="ripple_light">#1A6366F1</color>
+    <color name="ripple_dark">#1AFFFFFF</color>
+    
+    <!-- Divider colors -->
+    <color name="divider_light">#FFE2E8F0</color>
+    <color name="divider_dark">#FF334155</color>
+    
+    <!-- Shadow colors -->
+    <color name="shadow_light">#1A000000</color>
+    <color name="shadow_dark">#40000000</color>
+    
+    <!-- Note category colors -->
+    <color name="category_personal">#FFFF6B6B</color>
+    <color name="category_work">#FF4ECDC4</color>
+    <color name="category_ideas">#FFFFE66D</color>
+    <color name="category_important">#FFFF8B94</color>
+    <color name="category_default">#FFB8B8B8</color>
 </resources>
-
