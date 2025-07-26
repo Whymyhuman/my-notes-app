@@ -2,6 +2,7 @@ package com.example.notes.data;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "notes")
@@ -24,6 +25,7 @@ public class Note {
     @ColumnInfo(name = "category_id")
     public Integer categoryId; // Nullable - notes can exist without category
 
+    @Ignore
     public Note(String title, String content, long timestamp, boolean isPinned) {
         this.title = title;
         this.content = content;
