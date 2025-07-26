@@ -21,11 +21,23 @@ public class Note {
     @ColumnInfo(name = "is_pinned")
     public boolean isPinned;
 
+    @ColumnInfo(name = "category_id")
+    public Integer categoryId; // Nullable - notes can exist without category
+
     public Note(String title, String content, long timestamp, boolean isPinned) {
         this.title = title;
         this.content = content;
         this.timestamp = timestamp;
         this.isPinned = isPinned;
+        this.categoryId = null;
+    }
+
+    public Note(String title, String content, long timestamp, boolean isPinned, Integer categoryId) {
+        this.title = title;
+        this.content = content;
+        this.timestamp = timestamp;
+        this.isPinned = isPinned;
+        this.categoryId = categoryId;
     }
 
     // Getters (optional, but good practice for Java POJOs)
@@ -49,6 +61,10 @@ public class Note {
         return isPinned;
     }
 
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
     // Setters (optional)
     public void setId(int id) {
         this.id = id;
@@ -68,6 +84,10 @@ public class Note {
 
     public void setPinned(boolean pinned) {
         isPinned = pinned;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 }
 

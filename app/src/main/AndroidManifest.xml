@@ -35,6 +35,11 @@
             android:theme="@style/Theme.Notes"
             android:windowSoftInputMode="adjustResize" />
             
+        <activity
+            android:name=".CategoriesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Notes" />
+            
     </application>
 
 </manifest>

@@ -58,6 +58,11 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
                 startActivity(intent)
                 true
             }
+            R.id.action_categories -> {
+                val intent = Intent(this, CategoriesActivity::class.java)
+                startActivity(intent)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
