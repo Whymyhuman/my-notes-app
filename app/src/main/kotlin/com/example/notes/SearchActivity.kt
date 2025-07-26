@@ -15,7 +15,7 @@ import com.example.notes.databinding.ActivitySearchBinding
 import com.example.notes.viewmodel.NoteViewModel
 import kotlinx.coroutines.launch
 
-class SearchActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
     
     private lateinit var binding: ActivitySearchBinding
     private val noteViewModel: NoteViewModel by viewModels()
@@ -44,17 +44,8 @@ class SearchActivity : AppCompatActivity() {
     }
     
     private fun setupRecyclerView() {
-        notesAdapter = NotesAdapter(
-            onNoteClick = { note ->
-                val intent = Intent(this, AddEditNoteActivity::class.java)
-                intent.putExtra(MainActivity.EXTRA_NOTE_ID, note.id)
-                startActivity(intent)
-            },
-            onNoteLongClick = { note ->
-                // Handle long click (e.g., show context menu)
-                true
-            }
-        )
+        notesAdapter = NotesAdapter()
+        notesAdapter.setOnNoteClickListener(this)
         
         binding.recyclerView.apply {
             adapter = notesAdapter
@@ -96,7 +87,7 @@ class SearchActivity : AppCompatActivity() {
             }
         }
         
-        notesAdapter.updateNotes(filteredNotes)
+        notesAdapter.submitList(filteredNotes)
         
         // Show/hide empty state
         if (filteredNotes.isEmpty() && query.isNotEmpty()) {
@@ -108,5 +99,15 @@ class SearchActivity : AppCompatActivity() {
         } else {
             binding.tvEmptyState.visibility = android.view.View.GONE
         }
+    }
+    
+    override fun onNoteClick(note: Note) {
+        val intent = Intent(this, AddEditNoteActivity::class.java)
+        intent.putExtra(MainActivity.EXTRA_NOTE_ID, note.id)
+        startActivity(intent)
+    }
+    
+    override fun onMoreOptionsClick(note: Note, view: android.view.View) {
+        // Handle more options click if needed
     }
 }

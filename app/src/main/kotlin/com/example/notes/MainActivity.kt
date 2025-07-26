@@ -34,16 +34,10 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
-        setupToolbar()
         setupRecyclerView()
         setupSearchView()
         setupFab()
         observeNotes()
-    }
-    
-    private fun setupToolbar() {
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.title = "My Notes"
     }
     
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
