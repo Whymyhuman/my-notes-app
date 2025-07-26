@@ -64,4 +64,94 @@ class CategoriesActivity : AppCompatActivity() {
             }
         )
         
-        binding.recyclerView.apply {\n            adapter = categoriesAdapter\n            layoutManager = LinearLayoutManager(this@CategoriesActivity)\n        }\n    }\n    \n    private fun setupFab() {\n        binding.fabAddCategory.setOnClickListener {\n            showAddCategoryDialog()\n        }\n    }\n    \n    private fun observeCategories() {\n        categoryViewModel.allCategories.observe(this) { categories ->\n            categoriesAdapter.updateCategories(categories)\n            updateEmptyState(categories.isEmpty())\n        }\n    }\n    \n    private fun updateEmptyState(isEmpty: Boolean) {\n        if (isEmpty) {\n            binding.recyclerView.visibility = android.view.View.GONE\n            binding.tvEmptyState.visibility = android.view.View.VISIBLE\n        } else {\n            binding.recyclerView.visibility = android.view.View.VISIBLE\n            binding.tvEmptyState.visibility = android.view.View.GONE\n        }\n    }\n    \n    private fun showAddCategoryDialog() {\n        val editText = EditText(this)\n        editText.hint = \"Category name\"\n        \n        AlertDialog.Builder(this)\n            .setTitle(\"Add Category\")\n            .setView(editText)\n            .setPositiveButton(\"Add\") { _, _ ->\n                val name = editText.text.toString().trim()\n                if (name.isNotEmpty()) {\n                    val randomColor = predefinedColors[Random.nextInt(predefinedColors.size)]\n                    val category = Category(name, randomColor, System.currentTimeMillis())\n                    categoryViewModel.insertCategory(category)\n                } else {\n                    Toast.makeText(this, \"Category name cannot be empty\", Toast.LENGTH_SHORT).show()\n                }\n            }\n            .setNegativeButton(\"Cancel\", null)\n            .show()\n    }\n    \n    private fun showEditCategoryDialog(category: Category) {\n        val editText = EditText(this)\n        editText.setText(category.name)\n        editText.hint = \"Category name\"\n        \n        AlertDialog.Builder(this)\n            .setTitle(\"Edit Category\")\n            .setView(editText)\n            .setPositiveButton(\"Update\") { _, _ ->\n                val name = editText.text.toString().trim()\n                if (name.isNotEmpty()) {\n                    category.name = name\n                    categoryViewModel.updateCategory(category)\n                } else {\n                    Toast.makeText(this, \"Category name cannot be empty\", Toast.LENGTH_SHORT).show()\n                }\n            }\n            .setNegativeButton(\"Cancel\", null)\n            .show()\n    }\n    \n    private fun showDeleteCategoryDialog(category: Category) {\n        lifecycleScope.launch {\n            val notesCount = categoryViewModel.getNotesCountInCategory(category.id)\n            val message = if (notesCount > 0) {\n                \"This category contains $notesCount note(s). Deleting it will remove the category from all notes. Continue?\"\n            } else {\n                \"Are you sure you want to delete this category?\"\n            }\n            \n            AlertDialog.Builder(this@CategoriesActivity)\n                .setTitle(\"Delete Category\")\n                .setMessage(message)\n                .setPositiveButton(\"Delete\") { _, _ ->\n                    categoryViewModel.deleteCategory(category)\n                }\n                .setNegativeButton(\"Cancel\", null)\n                .show()\n        }\n    }\n}"
+        binding.recyclerView.apply {
+            adapter = categoriesAdapter
+            layoutManager = LinearLayoutManager(this@CategoriesActivity)
+        }
+    }
+    
+    private fun setupFab() {
+        binding.fabAddCategory.setOnClickListener {
+            showAddCategoryDialog()
+        }
+    }
+    
+    private fun observeCategories() {
+        categoryViewModel.allCategories.observe(this) { categories ->
+            categoriesAdapter.updateCategories(categories)
+            updateEmptyState(categories.isEmpty())
+        }
+    }
+    
+    private fun updateEmptyState(isEmpty: Boolean) {
+        if (isEmpty) {
+            binding.recyclerView.visibility = android.view.View.GONE
+            binding.tvEmptyState.visibility = android.view.View.VISIBLE
+        } else {
+            binding.recyclerView.visibility = android.view.View.VISIBLE
+            binding.tvEmptyState.visibility = android.view.View.GONE
+        }
+    }
+    
+    private fun showAddCategoryDialog() {
+        val editText = EditText(this)
+        editText.hint = "Category name"
+        
+        AlertDialog.Builder(this)
+            .setTitle("Add Category")
+            .setView(editText)
+            .setPositiveButton("Add") { _, _ ->
+                val name = editText.text.toString().trim()
+                if (name.isNotEmpty()) {
+                    val randomColor = predefinedColors[Random.nextInt(predefinedColors.size)]
+                    val category = Category(name, randomColor, System.currentTimeMillis())
+                    categoryViewModel.insertCategory(category)
+                } else {
+                    Toast.makeText(this, "Category name cannot be empty", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+    
+    private fun showEditCategoryDialog(category: Category) {
+        val editText = EditText(this)
+        editText.setText(category.name)
+        editText.hint = "Category name"
+        
+        AlertDialog.Builder(this)
+            .setTitle("Edit Category")
+            .setView(editText)
+            .setPositiveButton("Update") { _, _ ->
+                val name = editText.text.toString().trim()
+                if (name.isNotEmpty()) {
+                    category.name = name
+                    categoryViewModel.updateCategory(category)
+                } else {
+                    Toast.makeText(this, "Category name cannot be empty", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+    
+    private fun showDeleteCategoryDialog(category: Category) {
+        lifecycleScope.launch {
+            val notesCount = categoryViewModel.getNotesCountInCategory(category.id)
+            val message = if (notesCount > 0) {
+                "This category contains $notesCount note(s). Deleting it will remove the category from all notes. Continue?"
+            } else {
+                "Are you sure you want to delete this category?"
+            }
+            
+            AlertDialog.Builder(this@CategoriesActivity)
+                .setTitle("Delete Category")
+                .setMessage(message)
+                .setPositiveButton("Delete") { _, _ ->
+                    categoryViewModel.deleteCategory(category)
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
+        }
+    }
+}
