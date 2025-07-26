@@ -44,12 +44,13 @@ jobs:
         path: app/build/outputs/apk/debug/app-debug.apk
 
     - name: Setup Keystore
+      if: ${{ secrets.KEYSTORE_BASE64 }}
       run: |
         echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/my-notes-keystore.jks
-      if: ${{ secrets.KEYSTORE_BASE64 }}
 
     - name: Build Release APK
       id: build-release
+      if: ${{ secrets.KEYSTORE_BASE64 }}
       run: ./gradlew assembleRelease
       env:
         KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
@@ -91,4 +92,3 @@ jobs:
       with:
         name: test-results
         path: app/build/reports/tests/
-
