@@ -102,10 +102,10 @@ class AddEditNoteActivity : AppCompatActivity() {
         } else {
             // Create new note
             val newNote = Note(
-                title = title,
-                content = content,
-                timestamp = System.currentTimeMillis(),
-                isPinned = isPinned
+                title,
+                content,
+                System.currentTimeMillis(),
+                isPinned
             )
             noteViewModel.insertNote(newNote)
         }
