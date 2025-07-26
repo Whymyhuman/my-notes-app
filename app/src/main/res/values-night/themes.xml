@@ -3,7 +3,7 @@
     <!-- Dark theme for the application. -->
     <style name="Theme.Notes" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/accent_blue</item>
+        <item name="colorPrimary">@color/accent_primary</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
