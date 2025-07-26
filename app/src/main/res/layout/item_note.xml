@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/card_background_light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header with pin and more options -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:id="@+id/ivPin"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@android:drawable/ic_menu_agenda"
+                android:visibility="gone"
+                android:contentDescription="Pinned note" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/ivMore"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_more"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="4dp"
+                android:contentDescription="More options" />
+
+        </LinearLayout>
+
+        <!-- Note title -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note Title"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary_light"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Note content -->
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note content goes here..."
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary_light"
+            android:maxLines="4"
+            android:ellipsize="end"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Timestamp -->
+        <TextView
+            android:id="@+id/tvTimestamp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jan 01, 2024"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary_light"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

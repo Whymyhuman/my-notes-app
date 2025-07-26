@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Notes</string>
+    <string name="search_notes">Search notes…</string>
+    <string name="new_note">New Note</string>
+    <string name="pinned">Pinned</string>
+    <string name="note_title">Note title</string>
+    <string name="note_content">Write your note here…</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="pin">Pin</string>
+    <string name="unpin">Unpin</string>
+    <string name="edit">Edit</string>
+    <string name="notes_count">%d notes</string>
+    <string name="time_ago_days">%dd ago</string>
+    <string name="time_ago_hours">%dh ago</string>
+    <string name="time_ago_minutes">%dm ago</string>
+    <string name="time_ago_now">now</string>
+    <string name="empty_notes">No notes yet</string>
+    <string name="empty_notes_subtitle">Tap the + button to create your first note</string>
+</resources>
+
