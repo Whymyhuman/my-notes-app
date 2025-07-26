@@ -69,11 +69,9 @@ class SearchActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
     }
     
     private fun loadNotes() {
-        lifecycleScope.launch {
-            noteViewModel.getAllNotes().observe(this@SearchActivity) { notes ->
-                allNotes = notes
-                filterNotes(binding.etSearch.text.toString())
-            }
+        noteViewModel.allNotes.observe(this) { notes ->
+            allNotes = notes
+            filterNotes(binding.etSearch.text.toString())
         }
     }
     

@@ -65,9 +65,5 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteAllNotes() = viewModelScope.launch {
         repository.deleteAllNotes()
     }
-    
-    fun getAllNotes(): LiveData<List<Note>> {
-        return repository.getAllNotes()
-    }
 }
 
