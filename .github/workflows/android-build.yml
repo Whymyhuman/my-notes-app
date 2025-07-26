@@ -46,9 +46,10 @@ jobs:
     - name: Setup Keystore
       run: |
         echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/my-notes-keystore.jks
-      if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+      if: ${{ secrets.KEYSTORE_BASE64 }}
 
     - name: Build Release APK
+      id: build-release
       run: ./gradlew assembleRelease
       env:
         KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
@@ -58,7 +59,7 @@ jobs:
 
     - name: Upload Release APK
       uses: actions/upload-artifact@v4
-      if: success()
+      if: steps.build-release.outcome == 'success'
       with:
         name: app-release
         path: app/build/outputs/apk/release/app-release.apk
