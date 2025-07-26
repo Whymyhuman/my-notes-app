@@ -11,17 +11,33 @@ android {
         applicationId = "com.example.notes"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    
+    signingConfigs {
+        create("release") {
+            storeFile = file("my-notes-keystore.jks")
+            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "MyNotesApp2024!"
+            keyAlias = System.getenv("KEY_ALIAS") ?: "my-notes-key"
+            keyPassword = System.getenv("KEY_PASSWORD") ?: "MyNotesApp2024!"
+        }
+    }
+    
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
+        }
+        debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
         }
     }
     compileOptions {

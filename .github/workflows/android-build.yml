@@ -43,8 +43,17 @@ jobs:
         name: app-debug
         path: app/build/outputs/apk/debug/app-debug.apk
 
-    - name: Build Release APK (if keystore available)
+    - name: Setup Keystore
+      run: |
+        echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/my-notes-keystore.jks
+      if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+
+    - name: Build Release APK
       run: ./gradlew assembleRelease
+      env:
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       continue-on-error: true
 
     - name: Upload Release APK
@@ -52,7 +61,7 @@ jobs:
       if: success()
       with:
         name: app-release
-        path: app/build/outputs/apk/release/app-release-unsigned.apk
+        path: app/build/outputs/apk/release/app-release.apk
 
   test:
     runs-on: ubuntu-latest
