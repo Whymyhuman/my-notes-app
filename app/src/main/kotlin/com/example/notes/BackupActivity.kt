@@ -49,7 +49,7 @@ class BackupActivity : AppCompatActivity() {
     private fun setupToolbar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Backup & Export"
+        supportActionBar?.title = "Backup and Export"
         
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
