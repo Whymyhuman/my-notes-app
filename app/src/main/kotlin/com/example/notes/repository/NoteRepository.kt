@@ -24,5 +24,9 @@ class NoteRepository(private val noteDao: NoteDao) {
         noteDao.updatePinStatus(id, isPinned)
     
     suspend fun deleteNoteById(id: Int) = noteDao.deleteNoteById(id)
+    
+    suspend fun getAllNotesSync(): List<Note> = noteDao.getAllNotesSync()
+    
+    suspend fun deleteAllNotes() = noteDao.deleteAllNotes()
 }
 

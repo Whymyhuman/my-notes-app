@@ -57,5 +57,17 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
     suspend fun getNoteById(id: Int): Note? {
         return repository.getNoteById(id)
     }
+    
+    suspend fun getAllNotesSync(): List<Note> {
+        return repository.getAllNotesSync()
+    }
+    
+    fun deleteAllNotes() = viewModelScope.launch {
+        repository.deleteAllNotes()
+    }
+    
+    fun getAllNotes(): LiveData<List<Note>> {
+        return repository.getAllNotes()
+    }
 }
 

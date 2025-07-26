@@ -1,6 +1,7 @@
 package com.example.notes
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.notes.databinding.ActivitySettingsBinding
@@ -17,6 +18,7 @@ class SettingsActivity : AppCompatActivity() {
         
         setupToolbar()
         setupThemeSettings()
+        setupDataSection()
         setupAboutSection()
     }
     
@@ -35,6 +37,13 @@ class SettingsActivity : AppCompatActivity() {
         
         binding.layoutTheme.setOnClickListener {
             showThemeDialog()
+        }
+    }
+    
+    private fun setupDataSection() {
+        binding.layoutBackup.setOnClickListener {
+            val intent = Intent(this, BackupActivity::class.java)
+            startActivity(intent)
         }
     }
     
