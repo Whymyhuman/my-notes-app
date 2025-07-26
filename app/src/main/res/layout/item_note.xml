@@ -3,16 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="2dp"
-    app:cardBackgroundColor="@color/card_background_light">
+    android:layout_margin="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@color/card_background_light"
+    android:foreground="@drawable/card_selector"
+    android:clickable="true"
+    android:focusable="true"
+    app:rippleColor="@color/ripple_light"
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="18dp">
 
         <!-- Header with pin and more options -->
         <LinearLayout
@@ -20,13 +25,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="12dp">
 
             <ImageView
                 android:id="@+id/ivPin"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@android:drawable/ic_menu_agenda"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_pin_filled"
                 android:visibility="gone"
                 android:contentDescription="Pinned note" />
 
@@ -37,11 +42,11 @@
 
             <ImageView
                 android:id="@+id/ivMore"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_more"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_more_options"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="4dp"
+                android:padding="6dp"
                 android:contentDescription="More options" />
 
         </LinearLayout>
@@ -52,12 +57,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Note Title"
-            android:textSize="16sp"
+            android:textSize="17sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary_light"
             android:maxLines="2"
             android:ellipsize="end"
-            android:layout_marginBottom="8dp" />
+            android:lineSpacingExtra="2dp"
+            android:layout_marginBottom="10dp" />
 
         <!-- Note content -->
         <TextView
@@ -67,19 +73,38 @@
             android:text="Note content goes here..."
             android:textSize="14sp"
             android:textColor="@color/text_secondary_light"
-            android:maxLines="4"
+            android:maxLines="5"
             android:ellipsize="end"
-            android:layout_marginBottom="12dp" />
+            android:lineSpacingExtra="3dp"
+            android:layout_marginBottom="16dp" />
 
-        <!-- Timestamp -->
-        <TextView
-            android:id="@+id/tvTimestamp"
+        <!-- Bottom section with timestamp and category indicator -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Jan 01, 2024"
-            android:textSize="12sp"
-            android:textColor="@color/text_secondary_light"
-            android:gravity="end" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Category indicator dot -->
+            <View
+                android:id="@+id/vCategoryIndicator"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/category_dot"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Timestamp -->
+            <TextView
+                android:id="@+id/tvTimestamp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Jan 01, 2024"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary_light"
+                android:gravity="start" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
