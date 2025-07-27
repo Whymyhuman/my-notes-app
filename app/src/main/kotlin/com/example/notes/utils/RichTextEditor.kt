@@ -9,13 +9,13 @@ import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.util.AttributeSet
-import android.widget.EditText
+import androidx.appcompat.widget.AppCompatEditText
 
 class RichTextEditor @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : androidx.appcompat.widget.AppCompatEditText(context, attrs, defStyleAttr) {
+) : AppCompatEditText(context, attrs, defStyleAttr) {
 
     private var isBoldEnabled = false
     private var isItalicEnabled = false
@@ -106,16 +106,25 @@ class RichTextEditor @JvmOverloads constructor(
 
     fun getFormattedText(): String {
         val spannable = text as? Spannable ?: return text.toString()
-        return Html.toHtml(spannable, Html.TO_HTML_PARAGRAPH_LINES_CONSECUTIVE)
+        return try {
+            Html.toHtml(spannable, Html.TO_HTML_PARAGRAPH_LINES_CONSECUTIVE)
+        } catch (e: Exception) {
+            text.toString()
+        }
     }
 
     fun setFormattedText(htmlText: String) {
-        if (htmlText.isNotEmpty() && htmlText.contains("<")) {
-            // It's HTML formatted text
-            val spanned = Html.fromHtml(htmlText, Html.FROM_HTML_MODE_COMPACT)
-            setText(spanned, BufferType.SPANNABLE)
-        } else {
-            // Plain text
+        try {
+            if (htmlText.isNotEmpty() && htmlText.contains("<")) {
+                // It's HTML formatted text
+                val spanned = Html.fromHtml(htmlText, Html.FROM_HTML_MODE_COMPACT)
+                setText(spanned, BufferType.SPANNABLE)
+            } else {
+                // Plain text
+                setText(htmlText)
+            }
+        } catch (e: Exception) {
+            // Fallback to plain text
             setText(htmlText)
         }
     }

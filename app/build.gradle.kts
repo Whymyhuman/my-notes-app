@@ -11,8 +11,8 @@ android {
         applicationId = "com.example.notes"
         minSdk = 24
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = 4
+        versionName = "1.2.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     
@@ -72,6 +72,9 @@ dependencies {
     
     // CardView
     implementation("androidx.cardview:cardview:1.0.0")
+    
+    // Document picker for backup/restore
+    implementation("androidx.documentfile:documentfile:1.0.1")
     
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

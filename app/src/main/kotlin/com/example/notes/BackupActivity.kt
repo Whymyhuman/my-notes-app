@@ -1,6 +1,5 @@
 package com.example.notes
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
@@ -11,12 +10,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.notes.databinding.ActivityBackupBinding
-import com.example.notes.utils.BackupHelper
-import com.example.notes.viewmodel.CategoryViewModel
+import com.example.notes.utils.BackupUtils
 import com.example.notes.viewmodel.NoteViewModel
 import kotlinx.coroutines.launch
-import java.io.BufferedReader
-import java.io.InputStreamReader
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -24,16 +20,17 @@ class BackupActivity : AppCompatActivity() {
     
     private lateinit var binding: ActivityBackupBinding
     private val noteViewModel: NoteViewModel by viewModels()
-    private val categoryViewModel: CategoryViewModel by viewModels()
     
-    private val filePickerLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            result.data?.data?.let { uri ->
-                restoreFromBackup(uri)
-            }
-        }
+    private val createBackupLauncher = registerForActivityResult(
+        ActivityResultContracts.CreateDocument("application/json")
+    ) { uri ->
+        uri?.let { exportBackup(it) }
+    }
+    
+    private val restoreBackupLauncher = registerForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        uri?.let { importBackup(it) }
     }
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,13 +40,13 @@ class BackupActivity : AppCompatActivity() {
         
         setupToolbar()
         setupClickListeners()
-        updateLastBackupInfo()
+        updateBackupInfo()
     }
     
     private fun setupToolbar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Backup and Export"
+        supportActionBar?.title = "Backup & Restore"
         
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
@@ -62,51 +59,83 @@ class BackupActivity : AppCompatActivity() {
         }
         
         binding.btnRestoreBackup.setOnClickListener {
-            selectBackupFile()
+            restoreBackup()
         }
         
         binding.btnExportText.setOnClickListener {
             exportToText()
         }
-        
-        binding.btnExportJson.setOnClickListener {
-            createBackup(true)
+    }
+    
+    private fun updateBackupInfo() {
+        lifecycleScope.launch {
+            val notesCount = noteViewModel.getAllNotesSync().size
+            val lastBackup = getLastBackupTime()
+            
+            binding.tvNotesCount.text = "Total Notes: $notesCount"
+            binding.tvLastBackup.text = if (lastBackup.isNotEmpty()) {
+                "Last Backup: $lastBackup"
+            } else {
+                "No backup created yet"
+            }
         }
     }
     
-    private fun updateLastBackupInfo() {
-        // This would typically check for the last backup timestamp
-        // For now, we'll show a placeholder
-        binding.tvLastBackup.text = "No backup created yet"
+    private fun createBackup() {
+        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val fileName = "my_notes_backup_$timestamp.json"
+        createBackupLauncher.launch(fileName)
     }
     
-    private fun createBackup(forExport: Boolean = false) {
+    private fun exportBackup(uri: Uri) {
         lifecycleScope.launch {
             try {
-                binding.btnCreateBackup.isEnabled = false
-                binding.btnExportJson.isEnabled = false
-                
                 val notes = noteViewModel.getAllNotesSync()
-                val categories = categoryViewModel.allCategories.value ?: emptyList()
+                val success = BackupUtils.exportNotesToJson(this@BackupActivity, notes, uri)
                 
-                val backupFile = BackupHelper.createBackup(this@BackupActivity, notes, categories)
-                
-                if (backupFile != null) {
-                    if (forExport) {
-                        BackupHelper.shareFile(this@BackupActivity, backupFile, "application/json")
-                        Toast.makeText(this@BackupActivity, "Backup file ready to share", Toast.LENGTH_SHORT).show()
-                    } else {
-                        showBackupSuccessDialog(backupFile.name)
-                        updateLastBackupInfo()
-                    }
+                if (success) {
+                    saveLastBackupTime()
+                    updateBackupInfo()
+                    Toast.makeText(this@BackupActivity, "Backup created successfully", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this@BackupActivity, "Failed to create backup", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
                 Toast.makeText(this@BackupActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-            } finally {
-                binding.btnCreateBackup.isEnabled = true
-                binding.btnExportJson.isEnabled = true
+            }
+        }
+    }
+    
+    private fun restoreBackup() {
+        AlertDialog.Builder(this)
+            .setTitle("Restore Backup")
+            .setMessage("This will replace all current notes. Are you sure?")
+            .setPositiveButton("Restore") { _, _ ->
+                restoreBackupLauncher.launch(arrayOf("application/json"))
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+    
+    private fun importBackup(uri: Uri) {
+        lifecycleScope.launch {
+            try {
+                val notes = BackupUtils.importNotesFromJson(this@BackupActivity, uri)
+                
+                if (notes.isNotEmpty()) {
+                    // Clear existing notes and import new ones
+                    noteViewModel.deleteAllNotes()
+                    notes.forEach { note ->
+                        noteViewModel.insertNote(note)
+                    }
+                    
+                    updateBackupInfo()
+                    Toast.makeText(this@BackupActivity, "Backup restored successfully (${notes.size} notes)", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@BackupActivity, "No notes found in backup file", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(this@BackupActivity, "Failed to restore backup: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -114,111 +143,28 @@ class BackupActivity : AppCompatActivity() {
     private fun exportToText() {
         lifecycleScope.launch {
             try {
-                binding.btnExportText.isEnabled = false
-                
                 val notes = noteViewModel.getAllNotesSync()
-                val categories = categoryViewModel.allCategories.value ?: emptyList()
+                val filePath = BackupUtils.exportNotesToText(this@BackupActivity, notes)
                 
-                val exportFile = BackupHelper.exportNotesToText(this@BackupActivity, notes, categories)
-                
-                if (exportFile != null) {
-                    BackupHelper.shareFile(this@BackupActivity, exportFile, "text/plain")
-                    Toast.makeText(this@BackupActivity, "Notes exported to text file", Toast.LENGTH_SHORT).show()
+                if (filePath != null) {
+                    Toast.makeText(this@BackupActivity, "Notes exported to: $filePath", Toast.LENGTH_LONG).show()
                 } else {
                     Toast.makeText(this@BackupActivity, "Failed to export notes", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
                 Toast.makeText(this@BackupActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-            } finally {
-                binding.btnExportText.isEnabled = true
             }
         }
     }
     
-    private fun selectBackupFile() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
-            type = "*/*"
-            addCategory(Intent.CATEGORY_OPENABLE)
-        }
-        filePickerLauncher.launch(intent)
+    private fun saveLastBackupTime() {
+        val prefs = getSharedPreferences("backup_prefs", MODE_PRIVATE)
+        val timestamp = SimpleDateFormat("MMM dd, yyyy 'at' HH:mm", Locale.getDefault()).format(Date())
+        prefs.edit().putString("last_backup", timestamp).apply()
     }
     
-    private fun restoreFromBackup(uri: Uri) {
-        lifecycleScope.launch {
-            try {
-                val inputStream = contentResolver.openInputStream(uri)
-                val reader = BufferedReader(InputStreamReader(inputStream))
-                val backupContent = reader.readText()
-                reader.close()
-                
-                val backupData = BackupHelper.parseBackup(backupContent)
-                
-                if (backupData != null) {
-                    showRestoreConfirmationDialog(backupData)
-                } else {
-                    Toast.makeText(this@BackupActivity, "Invalid backup file", Toast.LENGTH_SHORT).show()
-                }
-            } catch (e: Exception) {
-                Toast.makeText(this@BackupActivity, "Error reading backup file: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-    
-    private fun showBackupSuccessDialog(fileName: String) {
-        AlertDialog.Builder(this)
-            .setTitle("Backup Created")
-            .setMessage("Backup file created successfully:\\n$fileName\\n\\nWould you like to share it?")
-            .setPositiveButton("Share") { _, _ ->
-                // Share the backup file
-                val backupFile = java.io.File(getExternalFilesDir(null), fileName)
-                BackupHelper.shareFile(this, backupFile, "application/json")
-            }
-            .setNegativeButton("OK", null)
-            .show()
-    }
-    
-    private fun showRestoreConfirmationDialog(backupData: BackupHelper.BackupData) {
-        val backupDate = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
-            .format(Date(backupData.timestamp))
-        
-        AlertDialog.Builder(this)
-            .setTitle("Restore Backup")
-            .setMessage(
-                "Backup Information:\\n" +
-                "Date: $backupDate\\n" +
-                "Notes: ${backupData.notes.size}\\n" +
-                "Categories: ${backupData.categories.size}\\n\\n" +
-                "⚠️ This will replace all current data. Continue?"
-            )
-            .setPositiveButton("Restore") { _, _ ->
-                performRestore(backupData)
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
-    }
-    
-    private fun performRestore(backupData: BackupHelper.BackupData) {
-        lifecycleScope.launch {
-            try {
-                // Clear existing data
-                noteViewModel.deleteAllNotes()
-                // Clear categories would need to be implemented
-                
-                // Restore categories first
-                backupData.categories.forEach { category ->
-                    categoryViewModel.insertCategory(category)
-                }
-                
-                // Restore notes
-                backupData.notes.forEach { note ->
-                    noteViewModel.insertNote(note)
-                }
-                
-                Toast.makeText(this@BackupActivity, "Backup restored successfully", Toast.LENGTH_SHORT).show()
-                finish()
-            } catch (e: Exception) {
-                Toast.makeText(this@BackupActivity, "Error restoring backup: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
-        }
+    private fun getLastBackupTime(): String {
+        val prefs = getSharedPreferences("backup_prefs", MODE_PRIVATE)
+        return prefs.getString("last_backup", "") ?: ""
     }
 }
