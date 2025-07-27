@@ -133,12 +133,12 @@ object ExportUtils {
                 append("My Notes Export\n")
                 append("Generated on: ${SimpleDateFormat("MMM dd, yyyy 'at' HH:mm", Locale.getDefault()).format(Date())}\n")
                 append("Total notes: ${notes.size}\n")
-                append("=" * 50)
+                append("=".repeat(50))
                 append("\n\n")
                 
                 notes.forEachIndexed { index, note ->
                     append("${index + 1}. ${note.title.ifEmpty { "Untitled" }}\n")
-                    append("-" * 30)
+                    append("-".repeat(30))
                     append("\n")
                     
                     val noteContent = if (note.content.contains("<")) {
@@ -153,7 +153,7 @@ object ExportUtils {
                     append("Created: ${dateFormat.format(Date(note.timestamp))}")
                     if (note.isPinned) append(" (Pinned)")
                     append("\n")
-                    append("=" * 50)
+                    append("=".repeat(50))
                     append("\n\n")
                 }
             }
