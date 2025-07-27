@@ -57,6 +57,11 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
                 startActivity(intent)
                 true
             }
+            R.id.action_trash -> {
+                val intent = Intent(this, TrashActivity::class.java)
+                startActivity(intent)
+                true
+            }
             R.id.action_settings -> {
                 val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
@@ -139,7 +144,7 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
                     true
                 }
                 R.id.action_delete -> {
-                    noteViewModel.deleteNote(note)
+                    noteViewModel.moveToTrash(note)
                     true
                 }
                 else -> false

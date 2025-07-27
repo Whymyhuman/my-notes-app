@@ -98,7 +98,7 @@
                 android:maxLines="3" />
 
             <!-- Content Input -->
-            <EditText
+            <com.example.notes.utils.RichTextEditor
                 android:id="@+id/etContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -112,9 +112,25 @@
                 android:inputType="textCapSentences|textMultiLine"
                 android:scrollbars="vertical" />
 
+            <!-- Image Container -->
+            <LinearLayout
+                android:id="@+id/llImageContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
+
         </LinearLayout>
 
     </ScrollView>
+
+    <!-- Formatting Toolbar -->
+    <include
+        android:id="@+id/formattingToolbar"
+        layout="@layout/formatting_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
 

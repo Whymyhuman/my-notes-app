@@ -28,5 +28,18 @@ class NoteRepository(private val noteDao: NoteDao) {
     suspend fun getAllNotesSync(): List<Note> = noteDao.getAllNotesSync()
     
     suspend fun deleteAllNotes() = noteDao.deleteAllNotes()
+    
+    // Trash/Recycle Bin functions
+    fun getDeletedNotes(): LiveData<List<Note>> = noteDao.getDeletedNotes()
+    
+    suspend fun moveToTrash(id: Int, deletedAt: Long) = noteDao.moveToTrash(id, deletedAt)
+    
+    suspend fun restoreFromTrash(id: Int) = noteDao.restoreFromTrash(id)
+    
+    suspend fun deleteOldTrashedNotes(cutoffTime: Long) = noteDao.deleteOldTrashedNotes(cutoffTime)
+    
+    suspend fun emptyTrash() = noteDao.emptyTrash()
+    
+    suspend fun getTrashCount(): Int = noteDao.getTrashCount()
 }
 

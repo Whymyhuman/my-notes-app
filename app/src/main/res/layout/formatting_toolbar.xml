@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="?attr/colorSurfaceVariant"
+    android:gravity="center_vertical">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBold"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        app:icon="@drawable/ic_format_bold"
+        app:iconTint="?attr/colorOnSurfaceVariant"
+        android:contentDescription="@string/bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnItalic"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        app:icon="@drawable/ic_format_italic"
+        app:iconTint="?attr/colorOnSurfaceVariant"
+        android:contentDescription="@string/italic" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnUnderline"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        app:icon="@drawable/ic_format_underlined"
+        app:iconTint="?attr/colorOnSurfaceVariant"
+        android:contentDescription="@string/underline" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="24dp"
+        android:layout_marginHorizontal="8dp"
+        android:background="?attr/colorOutlineVariant" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddImage"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        app:icon="@drawable/ic_image"
+        app:iconTint="?attr/colorOnSurfaceVariant"
+        android:contentDescription="@string/add_image" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSetReminder"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        app:icon="@drawable/ic_alarm"
+        app:iconTint="?attr/colorOnSurfaceVariant"
+        android:contentDescription="@string/set_reminder" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnClearFormatting"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:icon="@drawable/ic_format_clear"
+        app:iconTint="?attr/colorOnSurfaceVariant"
+        android:contentDescription="Clear formatting" />
+
+</LinearLayout>

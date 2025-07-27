@@ -19,5 +19,41 @@
     <string name="time_ago_now">now</string>
     <string name="empty_notes">No notes yet</string>
     <string name="empty_notes_subtitle">Tap the + button to create your first note</string>
+    
+    <!-- Trash related strings -->
+    <string name="trash_count">%d items in trash</string>
+    <string name="trash_empty">Trash is empty</string>
+    <string name="trash_empty_subtitle">Deleted notes will appear here.\nYou can restore them within 30 days.</string>
+    <string name="restore">Restore</string>
+    <string name="delete_permanently">Delete Permanently</string>
+    <string name="empty_trash">Empty Trash</string>
+    <string name="note_restored">Note restored</string>
+    <string name="note_deleted_permanently">Note permanently deleted</string>
+    <string name="trash_emptied">Trash emptied</string>
+    
+    <!-- Rich text formatting -->
+    <string name="bold">Bold</string>
+    <string name="italic">Italic</string>
+    <string name="underline">Underline</string>
+    <string name="format_text">Format Text</string>
+    
+    <!-- Image attachments -->
+    <string name="add_image">Add Image</string>
+    <string name="remove_image">Remove Image</string>
+    <string name="select_image_source">Select Image Source</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    
+    <!-- Reminders -->
+    <string name="set_reminder">Set Reminder</string>
+    <string name="remove_reminder">Remove Reminder</string>
+    <string name="reminder_set">Reminder set</string>
+    <string name="reminder_removed">Reminder removed</string>
+    
+    <!-- Export/Share -->
+    <string name="export_pdf">Export as PDF</string>
+    <string name="share_note">Share Note</string>
+    <string name="export_successful">Note exported successfully</string>
+    
 </resources>
 

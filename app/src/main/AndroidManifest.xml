@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name=".NotesApplication"
         android:allowBackup="true"
@@ -50,6 +57,16 @@
             android:name=".BackupActivity"
             android:exported="false"
             android:theme="@style/Theme.Notes" />
+            
+        <activity
+            android:name=".TrashActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Notes" />
+            
+        <!-- Reminder Receiver -->
+        <receiver
+            android:name=".utils.ReminderReceiver"
+            android:exported="false" />
             
         <provider
             android:name="androidx.core.content.FileProvider"

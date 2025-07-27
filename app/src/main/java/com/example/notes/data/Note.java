@@ -25,6 +25,18 @@ public class Note {
     @ColumnInfo(name = "category_id")
     public Integer categoryId; // Nullable - notes can exist without category
 
+    @ColumnInfo(name = "is_deleted")
+    public boolean isDeleted;
+
+    @ColumnInfo(name = "deleted_at")
+    public Long deletedAt; // Nullable - only set when deleted
+
+    @ColumnInfo(name = "image_paths")
+    public String imagePaths; // JSON string of image paths
+
+    @ColumnInfo(name = "reminder_time")
+    public Long reminderTime; // Nullable - timestamp for reminder
+
     @Ignore
     public Note(String title, String content, long timestamp, boolean isPinned) {
         this.title = title;
@@ -32,6 +44,10 @@ public class Note {
         this.timestamp = timestamp;
         this.isPinned = isPinned;
         this.categoryId = null;
+        this.isDeleted = false;
+        this.deletedAt = null;
+        this.imagePaths = null;
+        this.reminderTime = null;
     }
 
     public Note(String title, String content, long timestamp, boolean isPinned, Integer categoryId) {
@@ -40,6 +56,10 @@ public class Note {
         this.timestamp = timestamp;
         this.isPinned = isPinned;
         this.categoryId = categoryId;
+        this.isDeleted = false;
+        this.deletedAt = null;
+        this.imagePaths = null;
+        this.reminderTime = null;
     }
 
     // Getters (optional, but good practice for Java POJOs)
@@ -90,6 +110,38 @@ public class Note {
 
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public Long getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Long deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    public String getImagePaths() {
+        return imagePaths;
+    }
+
+    public void setImagePaths(String imagePaths) {
+        this.imagePaths = imagePaths;
+    }
+
+    public Long getReminderTime() {
+        return reminderTime;
+    }
+
+    public void setReminderTime(Long reminderTime) {
+        this.reminderTime = reminderTime;
     }
 }
 

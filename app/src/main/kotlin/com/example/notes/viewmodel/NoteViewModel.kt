@@ -17,6 +17,7 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
     private val searchQuery = MutableLiveData<String>()
     
     val allNotes: LiveData<List<Note>>
+    val deletedNotes: LiveData<List<Note>>
     
     init {
         val noteDao = NoteDatabase.getDatabase(application).noteDao()
@@ -29,6 +30,8 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
                 repository.searchNotes(query)
             }
         }
+        
+        deletedNotes = repository.getDeletedNotes()
         
         // Initialize with empty search to show all notes
         searchQuery.value = ""
@@ -64,6 +67,29 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
     
     fun deleteAllNotes() = viewModelScope.launch {
         repository.deleteAllNotes()
+    }
+    
+    // Trash/Recycle Bin functions
+    fun moveToTrash(note: Note) = viewModelScope.launch {
+        repository.moveToTrash(note.id, System.currentTimeMillis())
+    }
+    
+    fun restoreFromTrash(noteId: Int) = viewModelScope.launch {
+        repository.restoreFromTrash(noteId)
+    }
+    
+    fun emptyTrash() = viewModelScope.launch {
+        repository.emptyTrash()
+    }
+    
+    suspend fun getTrashCount(): Int {
+        return repository.getTrashCount()
+    }
+    
+    fun deleteOldTrashedNotes() = viewModelScope.launch {
+        // Delete notes older than 30 days
+        val cutoffTime = System.currentTimeMillis() - (30 * 24 * 60 * 60 * 1000L)
+        repository.deleteOldTrashedNotes(cutoffTime)
     }
 }
 

@@ -6,10 +6,10 @@ import androidx.room.*
 @Dao
 interface NoteDao {
     
-    @Query("SELECT * FROM notes ORDER BY is_pinned DESC, timestamp DESC")
+    @Query("SELECT * FROM notes WHERE is_deleted = 0 ORDER BY is_pinned DESC, timestamp DESC")
     fun getAllNotes(): LiveData<List<Note>>
     
-    @Query("SELECT * FROM notes WHERE title LIKE :searchQuery OR content LIKE :searchQuery ORDER BY is_pinned DESC, timestamp DESC")
+    @Query("SELECT * FROM notes WHERE is_deleted = 0 AND (title LIKE :searchQuery OR content LIKE :searchQuery) ORDER BY is_pinned DESC, timestamp DESC")
     fun searchNotes(searchQuery: String): LiveData<List<Note>>
     
     @Query("SELECT * FROM notes WHERE id = :id")
@@ -35,5 +35,24 @@ interface NoteDao {
     
     @Query("DELETE FROM notes")
     suspend fun deleteAllNotes()
+    
+    // Trash/Recycle Bin queries
+    @Query("SELECT * FROM notes WHERE is_deleted = 1 ORDER BY deleted_at DESC")
+    fun getDeletedNotes(): LiveData<List<Note>>
+    
+    @Query("UPDATE notes SET is_deleted = 1, deleted_at = :deletedAt WHERE id = :id")
+    suspend fun moveToTrash(id: Int, deletedAt: Long)
+    
+    @Query("UPDATE notes SET is_deleted = 0, deleted_at = NULL WHERE id = :id")
+    suspend fun restoreFromTrash(id: Int)
+    
+    @Query("DELETE FROM notes WHERE is_deleted = 1 AND deleted_at < :cutoffTime")
+    suspend fun deleteOldTrashedNotes(cutoffTime: Long)
+    
+    @Query("DELETE FROM notes WHERE is_deleted = 1")
+    suspend fun emptyTrash()
+    
+    @Query("SELECT COUNT(*) FROM notes WHERE is_deleted = 1")
+    suspend fun getTrashCount(): Int
 }
 
