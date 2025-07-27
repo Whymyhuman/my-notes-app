@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,8 +26,18 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
     
     companion object {
         const val EXTRA_NOTE_ID = "extra_note_id"
-        const val REQUEST_ADD_NOTE = 1
-        const val REQUEST_EDIT_NOTE = 2
+    }
+    
+    private val addNoteResultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        // Handle result if needed
+    }
+    
+    private val editNoteResultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        // Handle result if needed
     }
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,7 +108,7 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
     private fun setupFab() {
         binding.fabAddNote.setOnClickListener {
             val intent = Intent(this, AddEditNoteActivity::class.java)
-            startActivityForResult(intent, REQUEST_ADD_NOTE)
+            addNoteResultLauncher.launch(intent)
         }
     }
     
@@ -126,7 +137,7 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
     override fun onNoteClick(note: Note) {
         val intent = Intent(this, AddEditNoteActivity::class.java)
         intent.putExtra(EXTRA_NOTE_ID, note.id)
-        startActivityForResult(intent, REQUEST_EDIT_NOTE)
+        editNoteResultLauncher.launch(intent)
     }
     
     override fun onMoreOptionsClick(note: Note, view: View) {
