@@ -63,25 +63,34 @@ object BackupUtils {
             for (i in 0 until notesArray.length()) {
                 val jsonNote = notesArray.getJSONObject(i)
                 
-                val note = Note(
-                    title = jsonNote.getString("title"),
-                    content = jsonNote.getString("content"),
-                    timestamp = jsonNote.getLong("timestamp"),
-                    isPinned = jsonNote.getBoolean("isPinned"),
-                    categoryId = if (jsonNote.isNull("categoryId")) null else jsonNote.getInt("categoryId")
-                ).apply {
+                val note = if (jsonNote.isNull("categoryId")) {
+                    Note(
+                        title = jsonNote.getString("title"),
+                        content = jsonNote.getString("content"),
+                        timestamp = jsonNote.getLong("timestamp"),
+                        isPinned = jsonNote.getBoolean("isPinned")
+                    )
+                } else {
+                    Note(
+                        title = jsonNote.getString("title"),
+                        content = jsonNote.getString("content"),
+                        timestamp = jsonNote.getLong("timestamp"),
+                        isPinned = jsonNote.getBoolean("isPinned"),
+                        categoryId = jsonNote.getInt("categoryId")
+                    )
+                }.apply {
                     // Set additional fields if they exist
                     if (jsonNote.has("isDeleted")) {
-                        isDeleted = jsonNote.getBoolean("isDeleted")
+                        this.isDeleted = jsonNote.getBoolean("isDeleted")
                     }
                     if (jsonNote.has("deletedAt") && !jsonNote.isNull("deletedAt")) {
-                        deletedAt = jsonNote.getLong("deletedAt")
+                        this.deletedAt = jsonNote.getLong("deletedAt")
                     }
                     if (jsonNote.has("imagePaths") && !jsonNote.isNull("imagePaths")) {
-                        imagePaths = jsonNote.getString("imagePaths")
+                        this.imagePaths = jsonNote.getString("imagePaths")
                     }
                     if (jsonNote.has("reminderTime") && !jsonNote.isNull("reminderTime")) {
-                        reminderTime = jsonNote.getLong("reminderTime")
+                        this.reminderTime = jsonNote.getLong("reminderTime")
                     }
                 }
                 
