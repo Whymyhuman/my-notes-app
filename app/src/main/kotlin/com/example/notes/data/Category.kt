@@ -7,10 +7,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "categories")
 data class Category(
     @ColumnInfo(name = "name")
-    val name: String,
+    var name: String,
     
     @ColumnInfo(name = "color")
-    val color: String,
+    var color: String,
     
     @ColumnInfo(name = "created_at")
     val createdAt: Long = System.currentTimeMillis()

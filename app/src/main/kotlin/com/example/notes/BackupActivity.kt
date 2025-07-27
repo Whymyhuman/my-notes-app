@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.notes.databinding.ActivityBackupBinding
@@ -49,8 +50,15 @@ class BackupActivity : AppCompatActivity() {
         supportActionBar?.title = "Backup & Restore"
         
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            finish()
         }
+        
+        // Handle back button press
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finish()
+            }
+        })
     }
     
     private fun setupClickListeners() {

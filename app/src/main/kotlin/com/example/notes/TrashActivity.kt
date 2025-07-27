@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -55,8 +56,15 @@ class TrashActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
         supportActionBar?.title = "Trash"
         
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            finish()
         }
+        
+        // Handle back button press
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finish()
+            }
+        })
     }
     
     private fun setupRecyclerView() {

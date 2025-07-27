@@ -30,13 +30,13 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
     
     private val addNoteResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ) { result ->
+    ) { _ ->
         // Handle result if needed
     }
     
     private val editNoteResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ) { result ->
+    ) { _ ->
         // Handle result if needed
     }
     

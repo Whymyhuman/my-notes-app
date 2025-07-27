@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -39,8 +40,15 @@ class SearchActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
         supportActionBar?.title = "Search Notes"
         
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            finish()
         }
+        
+        // Handle back button press
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finish()
+            }
+        })
     }
     
     private fun setupRecyclerView() {

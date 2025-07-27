@@ -22,9 +22,9 @@ abstract class NoteDatabase : RoomDatabase() {
         private var INSTANCE: NoteDatabase? = null
         
         private val MIGRATION_1_2 = object : Migration(1, 2) {
-            override fun migrate(database: SupportSQLiteDatabase) {
+            override fun migrate(db: SupportSQLiteDatabase) {
                 // Create categories table
-                database.execSQL(
+                db.execSQL(
                     "CREATE TABLE IF NOT EXISTS categories (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                     "name TEXT NOT NULL, " +
@@ -33,17 +33,17 @@ abstract class NoteDatabase : RoomDatabase() {
                 )
                 
                 // Add category_id column to notes table
-                database.execSQL("ALTER TABLE notes ADD COLUMN category_id INTEGER")
+                db.execSQL("ALTER TABLE notes ADD COLUMN category_id INTEGER")
             }
         }
         
         private val MIGRATION_2_3 = object : Migration(2, 3) {
-            override fun migrate(database: SupportSQLiteDatabase) {
+            override fun migrate(db: SupportSQLiteDatabase) {
                 // Add new columns for enhanced features
-                database.execSQL("ALTER TABLE notes ADD COLUMN is_deleted INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE notes ADD COLUMN deleted_at INTEGER")
-                database.execSQL("ALTER TABLE notes ADD COLUMN image_paths TEXT")
-                database.execSQL("ALTER TABLE notes ADD COLUMN reminder_time INTEGER")
+                db.execSQL("ALTER TABLE notes ADD COLUMN is_deleted INTEGER NOT NULL DEFAULT 0")
+                db.execSQL("ALTER TABLE notes ADD COLUMN deleted_at INTEGER")
+                db.execSQL("ALTER TABLE notes ADD COLUMN image_paths TEXT")
+                db.execSQL("ALTER TABLE notes ADD COLUMN reminder_time INTEGER")
             }
         }
         

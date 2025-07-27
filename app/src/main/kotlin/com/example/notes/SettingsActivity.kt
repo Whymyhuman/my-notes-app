@@ -3,6 +3,7 @@ package com.example.notes
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.notes.databinding.ActivitySettingsBinding
 import com.example.notes.utils.ThemeHelper
@@ -28,8 +29,15 @@ class SettingsActivity : AppCompatActivity() {
         supportActionBar?.title = "Settings"
         
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            finish()
         }
+        
+        // Handle back button press
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finish()
+            }
+        })
     }
     
     private fun setupThemeSettings() {
