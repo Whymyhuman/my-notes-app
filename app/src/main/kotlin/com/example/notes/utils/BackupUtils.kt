@@ -65,18 +65,18 @@ object BackupUtils {
                 
                 val note = if (jsonNote.isNull("categoryId")) {
                     Note(
-                        title = jsonNote.getString("title"),
-                        content = jsonNote.getString("content"),
-                        timestamp = jsonNote.getLong("timestamp"),
-                        isPinned = jsonNote.getBoolean("isPinned")
+                        jsonNote.getString("title"),
+                        jsonNote.getString("content"),
+                        jsonNote.getLong("timestamp"),
+                        jsonNote.getBoolean("isPinned")
                     )
                 } else {
                     Note(
-                        title = jsonNote.getString("title"),
-                        content = jsonNote.getString("content"),
-                        timestamp = jsonNote.getLong("timestamp"),
-                        isPinned = jsonNote.getBoolean("isPinned"),
-                        categoryId = jsonNote.getInt("categoryId")
+                        jsonNote.getString("title"),
+                        jsonNote.getString("content"),
+                        jsonNote.getLong("timestamp"),
+                        jsonNote.getBoolean("isPinned"),
+                        jsonNote.getInt("categoryId")
                     )
                 }.apply {
                     // Set additional fields if they exist
