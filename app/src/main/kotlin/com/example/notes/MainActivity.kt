@@ -42,6 +42,15 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Check if onboarding should be shown
+        val sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        if (OnboardingActivity.shouldShowOnboarding(sharedPreferences)) {
+            startActivity(Intent(this, OnboardingActivity::class.java))
+            finish()
+            return
+        }
+        
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
@@ -164,4 +173,3 @@ class MainActivity : AppCompatActivity(), NotesAdapter.OnNoteClickListener {
         popup.show()
     }
 }
-

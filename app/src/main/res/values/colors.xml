@@ -22,5 +22,24 @@
     <color name="search_background">#FFF5F5F5</color>
     <color name="divider_light">#FFE0E0E0</color>
     <color name="divider_dark">#FF2C2C2C</color>
+    
+    <!-- Onboarding colors -->
+    <color name="onboarding_color_1">#FF667eea</color>
+    <color name="onboarding_color_2">#FFf5576c</color>
+    <color name="onboarding_color_3">#FF4ECDC4</color>
+    <color name="onboarding_color_4">#FFFF6B6B</color>
+    
+    <!-- Rich text formatting colors -->
+    <color name="highlight_yellow">#FFFFFF00</color>
+    <color name="highlight_green">#FF90EE90</color>
+    <color name="highlight_blue">#FF87CEEB</color>
+    <color name="highlight_pink">#FFFFC0CB</color>
+    <color name="highlight_orange">#FFFFA500</color>
+    
+    <!-- Text colors -->
+    <color name="text_red">#FFFF0000</color>
+    <color name="text_blue">#FF0000FF</color>
+    <color name="text_green">#FF008000</color>
+    <color name="text_purple">#FF800080</color>
+    <color name="text_orange">#FFFFA500</color>
 </resources>
-

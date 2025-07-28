@@ -9,6 +9,7 @@ import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.util.AttributeSet
+import android.widget.TextView.BufferType
 import androidx.appcompat.widget.AppCompatEditText
 
 class RichTextEditor @JvmOverloads constructor(
@@ -20,6 +21,11 @@ class RichTextEditor @JvmOverloads constructor(
     private var isBoldEnabled = false
     private var isItalicEnabled = false
     private var isUnderlineEnabled = false
+    
+    init {
+        // Ensure the EditText is properly initialized
+        setText("", BufferType.SPANNABLE)
+    }
 
     fun toggleBold() {
         isBoldEnabled = !isBoldEnabled
@@ -46,10 +52,11 @@ class RichTextEditor @JvmOverloads constructor(
         
         if (start == end) {
             // No selection, apply formatting to future text
+            // For now, we'll just update the button states
             return
         }
 
-        val spannable = text as? Spannable ?: return
+        val spannable = text as? Spannable ?: SpannableStringBuilder(text)
         
         // Remove existing formatting in selection
         removeFormattingInRange(spannable, start, end)

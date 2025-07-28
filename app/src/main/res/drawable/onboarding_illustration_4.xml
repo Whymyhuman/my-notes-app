@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+    
+    <!-- Background gradient circle -->
+    <path
+        android:pathData="M120,20 A100,100 0 1,1 120,220 A100,100 0 1,1 120,20 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:angle="135"
+                android:startColor="#FFD93D"
+                android:endColor="#FF6B6B"
+                android:type="linear" />
+        </aapt:attr>
+    </path>
+    
+    <!-- Cloud sync illustration -->
+    <!-- Cloud shape -->
+    <path
+        android:pathData="M120,80 Q140,60 160,80 Q180,70 190,90 Q200,90 200,110 Q200,130 180,130 L80,130 Q60,130 60,110 Q60,90 80,90 Q90,70 110,80 Q115,75 120,80 Z"
+        android:fillColor="#FFFFFF"
+        android:alpha="0.9"/>
+    
+    <!-- Sync arrows -->
+    <path
+        android:pathData="M100,100 L120,90 L120,95 L140,95 L140,105 L120,105 L120,110 Z"
+        android:fillColor="#FFD93D"/>
+    
+    <path
+        android:pathData="M140,120 L120,130 L120,125 L100,125 L100,115 L120,115 L120,110 Z"
+        android:fillColor="#FF6B6B"/>
+    
+    <!-- Device icons -->
+    <!-- Phone -->
+    <path
+        android:pathData="M70,150 L90,150 Q95,150 95,155 L95,185 Q95,190 90,190 L70,190 Q65,190 65,185 L65,155 Q65,150 70,150 Z"
+        android:fillColor="#4ECDC4"
+        android:alpha="0.8"/>
+    
+    <!-- Tablet -->
+    <path
+        android:pathData="M110,155 L140,155 Q145,155 145,160 L145,180 Q145,185 140,185 L110,185 Q105,185 105,180 L105,160 Q105,155 110,155 Z"
+        android:fillColor="#667eea"
+        android:alpha="0.8"/>
+    
+    <!-- Laptop -->
+    <path
+        android:pathData="M155,160 L185,160 Q190,160 190,165 L190,175 Q190,180 185,180 L155,180 Q150,180 150,175 L150,165 Q150,160 155,160 Z"
+        android:fillColor="#764ba2"
+        android:alpha="0.8"/>
+    
+    <!-- Connection lines -->
+    <path android:pathData="M80,150 L110,130" android:strokeColor="#FFFFFF" android:strokeWidth="2" android:alpha="0.6"/>
+    <path android:pathData="M125,155 L130,130" android:strokeColor="#FFFFFF" android:strokeWidth="2" android:alpha="0.6"/>
+    <path android:pathData="M170,160 L150,130" android:strokeColor="#FFFFFF" android:strokeWidth="2" android:alpha="0.6"/>
+    
+</vector>
+

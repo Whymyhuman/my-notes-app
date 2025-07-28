@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    
+    <!-- Background circle -->
+    <path
+        android:pathData="M60,10 A50,50 0 1,1 60,110 A50,50 0 1,1 60,10 Z"
+        android:fillColor="#F5F5F5"
+        android:strokeColor="#E0E0E0"
+        android:strokeWidth="2"/>
+    
+    <!-- Note stack -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#BDBDBD"
+        android:strokeWidth="1.5"
+        android:pathData="M35,40 L85,40 L85,85 L35,85 Z"/>
+    
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#BDBDBD"
+        android:strokeWidth="1.5"
+        android:pathData="M32,37 L82,37 L82,82 L32,82 Z"/>
+    
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#9E9E9E"
+        android:strokeWidth="2"
+        android:pathData="M30,35 L80,35 L80,80 L30,80 Z"/>
+    
+    <!-- Lines on the note -->
+    <path
+        android:strokeColor="#E0E0E0"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M38,45 L72,45 M38,52 L68,52 M38,59 L70,59 M38,66 L65,66"/>
+    
+    <!-- Pencil -->
+    <path
+        android:fillColor="#FFB74D"
+        android:strokeColor="#FF9800"
+        android:strokeWidth="1"
+        android:pathData="M75,25 L85,35 L70,50 L60,40 Z"/>
+    
+    <path
+        android:fillColor="#8D6E63"
+        android:pathData="M85,35 L87,37 L72,52 L70,50 Z"/>
+    
+</vector>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:pivotX="54"
+        android:pivotY="54">
+        <!-- Note icon with modern design -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M32,24h44c2.2,0 4,1.8 4,4v52c0,2.2 -1.8,4 -4,4H32c-2.2,0 -4,-1.8 -4,-4V28C28,25.8 29.8,24 32,24z"
+            android:strokeWidth="2"
+            android:strokeColor="#FFFFFF"
+            android:strokeLineCap="round"/>
+        
+        <!-- Lines representing text -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="2"
+            android:strokeLineCap="round"
+            android:pathData="M36,36h32M36,44h28M36,52h24M36,60h30"/>
+        
+        <!-- Pen/Edit icon -->
+        <path
+            android:fillColor="#FFD700"
+            android:pathData="M64,20l8,8 -20,20 -8,0 0,-8z"
+            android:strokeWidth="1"
+            android:strokeColor="#FFA500"
+            android:strokeLineCap="round"/>
+        
+        <!-- Small highlight/accent -->
+        <path
+            android:fillColor="#FF6B6B"
+            android:pathData="M70,23 A3,3 0 1,1 70,29 A3,3 0 1,1 70,23 Z"/>
+    </group>
+</vector>
