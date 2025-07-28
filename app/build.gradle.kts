@@ -70,6 +70,9 @@ dependencies {
     // RecyclerView
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     
+    // ViewPager2 for onboarding
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    
     // CardView
     implementation("androidx.cardview:cardview:1.0.0")
     
