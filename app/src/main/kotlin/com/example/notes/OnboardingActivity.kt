@@ -20,7 +20,7 @@ class OnboardingActivity : AppCompatActivity() {
     
     private val onboardingPages = listOf(
         OnboardingPage(
-            title = "Welcome to QuickNotes Pro",
+            title = "Welcome to My Notes",
             description = "Your thoughts, organized beautifully. Create, edit, and manage your notes with ease.",
             illustration = R.drawable.onboarding_illustration_1,
             primaryColor = R.color.onboarding_color_1
@@ -179,4 +179,3 @@ data class OnboardingPage(
     val illustration: Int,
     val primaryColor: Int
 )
-
