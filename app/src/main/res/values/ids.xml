@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Rich text formatting action IDs -->
+    <item name="action_bold" type="id" />
+    <item name="action_italic" type="id" />
+    <item name="action_underline" type="id" />
+    <item name="action_strikethrough" type="id" />
+    <item name="action_highlight" type="id" />
+    <item name="action_text_color" type="id" />
+    <item name="action_bullet_list" type="id" />
+    <item name="action_numbered_list" type="id" />
+    <item name="action_checkbox" type="id" />
+    <item name="action_clear_formatting" type="id" />
+    <item name="action_undo" type="id" />
+    <item name="action_redo" type="id" />
+</resources>

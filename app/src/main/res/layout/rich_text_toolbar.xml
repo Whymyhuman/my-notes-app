@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorSurface"
+    android:elevation="4dp"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <!-- Bold Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBold"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/bold"
+            app:icon="@drawable/ic_format_bold"
+            app:iconSize="20dp" />
+
+        <!-- Italic Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnItalic"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/italic"
+            app:icon="@drawable/ic_format_italic"
+            app:iconSize="20dp" />
+
+        <!-- Underline Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUnderline"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/underline"
+            app:icon="@drawable/ic_format_underlined"
+            app:iconSize="20dp" />
+
+        <!-- Strikethrough Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStrikethrough"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Strikethrough"
+            app:icon="@drawable/ic_strikethrough"
+            app:iconSize="20dp" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="8dp"
+            android:background="?attr/colorOutline" />
+
+        <!-- Highlight Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHighlight"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Highlight"
+            app:icon="@drawable/ic_highlight"
+            app:iconSize="20dp" />
+
+        <!-- Text Color Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTextColor"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Text Color"
+            app:icon="@drawable/ic_text_color"
+            app:iconSize="20dp" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="8dp"
+            android:background="?attr/colorOutline" />
+
+        <!-- Bullet List Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBulletList"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Bullet List"
+            app:icon="@drawable/ic_list_bulleted"
+            app:iconSize="20dp" />
+
+        <!-- Numbered List Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNumberedList"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Numbered List"
+            app:icon="@drawable/ic_list_numbered"
+            app:iconSize="20dp" />
+
+        <!-- Checkbox Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCheckbox"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Checkbox"
+            app:icon="@drawable/ic_checkbox"
+            app:iconSize="20dp" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="8dp"
+            android:background="?attr/colorOutline" />
+
+        <!-- Clear Formatting Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClearFormatting"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Clear Formatting"
+            app:icon="@drawable/ic_format_clear"
+            app:iconSize="20dp" />
+
+        <!-- Undo Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUndo"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Undo"
+            app:icon="@drawable/ic_undo"
+            app:iconSize="20dp" />
+
+        <!-- Redo Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRedo"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="Redo"
+            app:icon="@drawable/ic_redo"
+            app:iconSize="20dp" />
+
+    </LinearLayout>
+
+</HorizontalScrollView>

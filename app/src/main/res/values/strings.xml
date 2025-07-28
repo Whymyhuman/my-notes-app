@@ -39,6 +39,15 @@
     <string name="italic">Italic</string>
     <string name="underline">Underline</string>
     <string name="format_text">Format Text</string>
+    <string name="strikethrough">Strikethrough</string>
+    <string name="highlight">Highlight</string>
+    <string name="text_color">Text Color</string>
+    <string name="bullet_list">Bullet List</string>
+    <string name="numbered_list">Numbered List</string>
+    <string name="checkbox">Checkbox</string>
+    <string name="clear_formatting">Clear Formatting</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
     
     <!-- Image attachments -->
     <string name="add_image">Add Image</string>
