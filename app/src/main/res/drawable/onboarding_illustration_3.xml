@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+    
+    <!-- Background gradient circle -->
+    <circle
+        android:cx="120"
+        android:cy="120"
+        android:r="100">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:angle="135"
+                android:startColor="#4ECDC4"
+                android:endColor="#44A08D"
+                android:type="linear" />
+        </aapt:attr>
+    </circle>
+    
+    <!-- Categories illustration - Folders with colors -->
+    <rect
+        android:width="50"
+        android:height="35"
+        android:x="70"
+        android:y="80"
+        android:rx="4"
+        android:fillColor="#FF6B6B"
+        android:alpha="0.9"/>
+    
+    <rect
+        android:width="50"
+        android:height="35"
+        android:x="120"
+        android:y="80"
+        android:rx="4"
+        android:fillColor="#4ECDC4"
+        android:alpha="0.9"/>
+    
+    <rect
+        android:width="50"
+        android:height="35"
+        android:x="70"
+        android:y="125"
+        android:rx="4"
+        android:fillColor="#FFD93D"
+        android:alpha="0.9"/>
+    
+    <rect
+        android:width="50"
+        android:height="35"
+        android:x="120"
+        android:y="125"
+        android:rx="4"
+        android:fillColor="#6BCF7F"
+        android:alpha="0.9"/>
+    
+    <!-- Folder tabs -->
+    <rect android:width="15" android:height="6" android:x="75" android:y="74" android:rx="3" android:fillColor="#FF6B6B"/>
+    <rect android:width="15" android:height="6" android:x="125" android:y="74" android:rx="3" android:fillColor="#4ECDC4"/>
+    <rect android:width="15" android:height="6" android:x="75" android:y="119" android:rx="3" android:fillColor="#FFD93D"/>
+    <rect android:width="15" android:height="6" android:x="125" android:y="119" android:rx="3" android:fillColor="#6BCF7F"/>
+    
+    <!-- Category labels -->
+    <rect android:width="30" android:height="4" android:x="80" android:y="90" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.8"/>
+    <rect android:width="25" android:height="3" android:x="80" android:y="98" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.6"/>
+    
+    <rect android:width="35" android:height="4" android:x="125" android:y="90" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.8"/>
+    <rect android:width="30" android:height="3" android:x="125" android:y="98" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.6"/>
+    
+    <rect android:width="28" android:height="4" android:x="80" android:y="135" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.8"/>
+    <rect android:width="32" android:height="3" android:x="80" android:y="143" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.6"/>
+    
+    <rect android:width="33" android:height="4" android:x="125" android:y="135" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.8"/>
+    <rect android:width="28" android:height="3" android:x="125" android:y="143" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.6"/>
+    
+    <!-- Floating organization elements -->
+    <circle android:cx="50" android:cy="50" android:r="6" android:fillColor="#FFFFFF" android:alpha="0.8"/>
+    <circle android:cx="190" android:cy="190" android:r="8" android:fillColor="#FFFFFF" android:alpha="0.8"/>
+    <circle android:cx="200" android:cy="50" android:r="5" android:fillColor="#FFFFFF" android:alpha="0.8"/>
+    
+</vector>
+

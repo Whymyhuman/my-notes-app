@@ -32,6 +32,12 @@
         </activity>
         
         <activity
+            android:name=".OnboardingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Notes.NoActionBar"
+            android:screenOrientation="portrait" />
+        
+        <activity
             android:name=".AddEditNoteActivity"
             android:exported="false"
             android:theme="@style/Theme.Notes"
@@ -81,4 +87,3 @@
     </application>
 
 </manifest>
-

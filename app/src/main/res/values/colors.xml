@@ -22,5 +22,10 @@
     <color name="search_background">#FFF5F5F5</color>
     <color name="divider_light">#FFE0E0E0</color>
     <color name="divider_dark">#FF2C2C2C</color>
+    
+    <!-- Onboarding colors -->
+    <color name="onboarding_color_1">#FF667eea</color>
+    <color name="onboarding_color_2">#FFf5576c</color>
+    <color name="onboarding_color_3">#FF4ECDC4</color>
+    <color name="onboarding_color_4">#FFFF6B6B</color>
 </resources>
-
