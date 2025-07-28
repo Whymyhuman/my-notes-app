@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="240dp"
     android:height="240dp"
     android:viewportWidth="240"
@@ -81,4 +82,3 @@
     <circle android:cx="200" android:cy="50" android:r="5" android:fillColor="#FFFFFF" android:alpha="0.8"/>
     
 </vector>
-
