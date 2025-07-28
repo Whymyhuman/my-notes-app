@@ -7,10 +7,8 @@
     android:viewportHeight="240">
     
     <!-- Background gradient circle -->
-    <circle
-        android:cx="120"
-        android:cy="120"
-        android:r="100">
+    <path
+        android:pathData="M120,20 A100,100 0 1,1 120,220 A100,100 0 1,1 120,20 Z">
         <aapt:attr name="android:fillColor">
             <gradient
                 android:angle="135"
@@ -18,67 +16,36 @@
                 android:endColor="#44A08D"
                 android:type="linear" />
         </aapt:attr>
-    </circle>
+    </path>
     
-    <!-- Categories illustration - Folders with colors -->
-    <rect
-        android:width="50"
-        android:height="35"
-        android:x="70"
-        android:y="80"
-        android:rx="4"
-        android:fillColor="#FF6B6B"
-        android:alpha="0.9"/>
-    
-    <rect
-        android:width="50"
-        android:height="35"
-        android:x="120"
-        android:y="80"
-        android:rx="4"
+    <!-- Categories organization illustration -->
+    <!-- Folder 1 -->
+    <path
+        android:pathData="M60,80 L90,80 Q95,80 95,85 L95,90 L130,90 Q135,90 135,95 L135,130 Q135,135 130,135 L65,135 Q60,135 60,130 L60,85 Q60,80 65,80 Z"
         android:fillColor="#4ECDC4"
-        android:alpha="0.9"/>
+        android:alpha="0.8"/>
     
-    <rect
-        android:width="50"
-        android:height="35"
-        android:x="70"
-        android:y="125"
-        android:rx="4"
-        android:fillColor="#FFD93D"
-        android:alpha="0.9"/>
+    <!-- Folder 2 -->
+    <path
+        android:pathData="M105,100 L135,100 Q140,100 140,105 L140,110 L175,110 Q180,110 180,115 L180,150 Q180,155 175,155 L110,155 Q105,155 105,150 L105,105 Q105,100 110,100 Z"
+        android:fillColor="#44A08D"
+        android:alpha="0.8"/>
     
-    <rect
-        android:width="50"
-        android:height="35"
-        android:x="120"
-        android:y="125"
-        android:rx="4"
-        android:fillColor="#6BCF7F"
-        android:alpha="0.9"/>
-    
-    <!-- Folder tabs -->
-    <rect android:width="15" android:height="6" android:x="75" android:y="74" android:rx="3" android:fillColor="#FF6B6B"/>
-    <rect android:width="15" android:height="6" android:x="125" android:y="74" android:rx="3" android:fillColor="#4ECDC4"/>
-    <rect android:width="15" android:height="6" android:x="75" android:y="119" android:rx="3" android:fillColor="#FFD93D"/>
-    <rect android:width="15" android:height="6" android:x="125" android:y="119" android:rx="3" android:fillColor="#6BCF7F"/>
+    <!-- Folder 3 -->
+    <path
+        android:pathData="M80,120 L110,120 Q115,120 115,125 L115,130 L150,130 Q155,130 155,135 L155,170 Q155,175 150,175 L85,175 Q80,175 80,170 L80,125 Q80,120 85,120 Z"
+        android:fillColor="#FFD700"
+        android:alpha="0.8"/>
     
     <!-- Category labels -->
-    <rect android:width="30" android:height="4" android:x="80" android:y="90" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.8"/>
-    <rect android:width="25" android:height="3" android:x="80" android:y="98" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.6"/>
+    <path android:pathData="M70,110 L120,110 Q122,110 122,112 L122,116 Q122,118 120,118 L70,118 Q68,118 68,116 L68,112 Q68,110 70,110 Z" android:fillColor="#FFFFFF"/>
+    <path android:pathData="M115,130 L165,130 Q167,130 167,132 L167,136 Q167,138 165,138 L115,138 Q113,138 113,136 L113,132 Q113,130 115,130 Z" android:fillColor="#FFFFFF"/>
+    <path android:pathData="M90,150 L140,150 Q142,150 142,152 L142,156 Q142,158 140,158 L90,158 Q88,158 88,156 L88,152 Q88,150 90,150 Z" android:fillColor="#FFFFFF"/>
     
-    <rect android:width="35" android:height="4" android:x="125" android:y="90" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.8"/>
-    <rect android:width="30" android:height="3" android:x="125" android:y="98" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.6"/>
-    
-    <rect android:width="28" android:height="4" android:x="80" android:y="135" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.8"/>
-    <rect android:width="32" android:height="3" android:x="80" android:y="143" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.6"/>
-    
-    <rect android:width="33" android:height="4" android:x="125" android:y="135" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.8"/>
-    <rect android:width="28" android:height="3" android:x="125" android:y="143" android:rx="1" android:fillColor="#FFFFFF" android:alpha="0.6"/>
-    
-    <!-- Floating organization elements -->
-    <circle android:cx="50" android:cy="50" android:r="6" android:fillColor="#FFFFFF" android:alpha="0.8"/>
-    <circle android:cx="190" android:cy="190" android:r="8" android:fillColor="#FFFFFF" android:alpha="0.8"/>
-    <circle android:cx="200" android:cy="50" android:r="5" android:fillColor="#FFFFFF" android:alpha="0.8"/>
+    <!-- Floating organization icons -->
+    <path android:pathData="M50,50 A8,8 0 1,1 50,66 A8,8 0 1,1 50,50 Z" android:fillColor="#FF6B6B" android:alpha="0.8"/>
+    <path android:pathData="M190,60 A6,6 0 1,1 190,72 A6,6 0 1,1 190,60 Z" android:fillColor="#FFD93D" android:alpha="0.8"/>
+    <path android:pathData="M40,190 A5,5 0 1,1 40,200 A5,5 0 1,1 40,190 Z" android:fillColor="#4ECDC4" android:alpha="0.8"/>
     
 </vector>
+

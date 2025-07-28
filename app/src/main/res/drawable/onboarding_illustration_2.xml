@@ -7,10 +7,8 @@
     android:viewportHeight="240">
     
     <!-- Background gradient circle -->
-    <circle
-        android:cx="120"
-        android:cy="120"
-        android:r="100">
+    <path
+        android:pathData="M120,20 A100,100 0 1,1 120,220 A100,100 0 1,1 120,20 Z">
         <aapt:attr name="android:fillColor">
             <gradient
                 android:angle="135"
@@ -18,48 +16,44 @@
                 android:endColor="#f5576c"
                 android:type="linear" />
         </aapt:attr>
-    </circle>
+    </path>
     
-    <!-- Rich text illustration - Document with formatting -->
-    <rect
-        android:width="80"
-        android:height="100"
-        android:x="80"
-        android:y="70"
-        android:rx="8"
+    <!-- Rich text formatting illustration -->
+    <!-- Document -->
+    <path
+        android:pathData="M80,60 L160,60 Q170,60 170,70 L170,170 Q170,180 160,180 L80,180 Q70,180 70,170 L70,70 Q70,60 80,60 Z"
         android:fillColor="#FFFFFF"
         android:strokeColor="#E0E0E0"
         android:strokeWidth="2"/>
     
-    <!-- Formatted text lines -->
-    <rect android:width="60" android:height="6" android:x="90" android:y="85" android:rx="1" android:fillColor="#2E2E2E"/>
-    <rect android:width="25" android:height="6" android:x="90" android:y="95" android:rx="1" android:fillColor="#2E2E2E" android:alpha="0.8"/>
-    <rect android:width="45" android:height="6" android:x="90" android:y="105" android:rx="1" android:fillColor="#f5576c"/>
-    <rect android:width="35" android:height="6" android:x="90" android:y="115" android:rx="1" android:fillColor="#2E2E2E" android:alpha="0.6"/>
-    <rect android:width="50" android:height="6" android:x="90" android:y="125" android:rx="1" android:fillColor="#2E2E2E"/>
-    <rect android:width="40" android:height="6" android:x="90" android:y="135" android:rx="1" android:fillColor="#f093fb"/>
+    <!-- Bold text line -->
+    <path android:pathData="M85,80 L155,80 Q157,80 157,82 L157,88 Q157,90 155,90 L85,90 Q83,90 83,88 L83,82 Q83,80 85,80 Z" android:fillColor="#f093fb"/>
+    
+    <!-- Italic text line -->
+    <path android:pathData="M85,100 L140,100 Q142,100 142,102 L142,106 Q142,108 140,108 L85,108 Q83,108 83,106 L83,102 Q83,100 85,100 Z" android:fillColor="#E0E0E0"/>
+    
+    <!-- Underlined text -->
+    <path android:pathData="M85,118 L150,118 Q152,118 152,120 L152,124 Q152,126 150,126 L85,126 Q83,126 83,124 L83,120 Q83,118 85,118 Z" android:fillColor="#E0E0E0"/>
+    <path android:pathData="M83,128 L152,128" android:strokeColor="#f5576c" android:strokeWidth="2"/>
+    
+    <!-- Bullet points -->
+    <path android:pathData="M88,140 A2,2 0 1,1 88,144 A2,2 0 1,1 88,140 Z" android:fillColor="#f093fb"/>
+    <path android:pathData="M95,140 L145,140 Q147,140 147,142 L147,144 Q147,146 145,146 L95,146 Q93,146 93,144 L93,142 Q93,140 95,140 Z" android:fillColor="#E0E0E0"/>
+    
+    <path android:pathData="M88,152 A2,2 0 1,1 88,156 A2,2 0 1,1 88,152 Z" android:fillColor="#f093fb"/>
+    <path android:pathData="M95,152 L135,152 Q137,152 137,154 L137,156 Q137,158 135,158 L95,158 Q93,158 93,156 L93,154 Q93,152 95,152 Z" android:fillColor="#E0E0E0"/>
     
     <!-- Formatting toolbar -->
-    <rect
-        android:width="70"
-        android:height="12"
-        android:x="85"
-        android:y="150"
-        android:rx="6"
+    <path
+        android:pathData="M75,40 L165,40 Q170,40 170,45 L170,50 Q170,55 165,55 L75,55 Q70,55 70,50 L70,45 Q70,40 75,40 Z"
         android:fillColor="#F8F9FA"
         android:strokeColor="#E0E0E0"
         android:strokeWidth="1"/>
     
     <!-- Toolbar buttons -->
-    <rect android:width="8" android:height="8" android:x="89" android:y="152" android:rx="2" android:fillColor="#667eea"/>
-    <rect android:width="8" android:height="8" android:x="101" android:y="152" android:rx="2" android:fillColor="#764ba2"/>
-    <rect android:width="8" android:height="8" android:x="113" android:y="152" android:rx="2" android:fillColor="#f5576c"/>
-    <rect android:width="8" android:height="8" android:x="125" android:y="152" android:rx="2" android:fillColor="#4ECDC4"/>
-    <rect android:width="8" android:height="8" android:x="137" android:y="152" android:rx="2" android:fillColor="#FFD700"/>
-    
-    <!-- Floating format symbols -->
-    <text android:x="50" android:y="70" android:text="B" android:textSize="16" android:fillColor="#FFFFFF" android:fontFamily="serif" android:textStyle="bold"/>
-    <text android:x="180" android:y="60" android:text="I" android:textSize="14" android:fillColor="#FFFFFF" android:fontFamily="serif" android:textStyle="italic"/>
-    <text android:x="60" android:y="190" android:text="U" android:textSize="12" android:fillColor="#FFFFFF" android:fontFamily="serif"/>
+    <path android:pathData="M80,45 L85,45 Q87,45 87,47 L87,48 Q87,50 85,50 L80,50 Q78,50 78,48 L78,47 Q78,45 80,45 Z" android:fillColor="#f093fb"/>
+    <path android:pathData="M95,45 L100,45 Q102,45 102,47 L102,48 Q102,50 100,50 L95,50 Q93,50 93,48 L93,47 Q93,45 95,45 Z" android:fillColor="#f5576c"/>
+    <path android:pathData="M110,45 L115,45 Q117,45 117,47 L117,48 Q117,50 115,50 L110,50 Q108,50 108,48 L108,47 Q108,45 110,45 Z" android:fillColor="#FFD700"/>
     
 </vector>
+

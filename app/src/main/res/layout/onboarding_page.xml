@@ -25,7 +25,7 @@
         android:gravity="center"
         android:textAppearance="?attr/textAppearanceHeadlineMedium"
         android:textColor="?attr/colorOnSurface"
-        android:fontFamily="@font/google_sans_medium" />
+        android:fontFamily="sans-serif-medium" />
 
     <!-- Description -->
     <TextView
@@ -36,7 +36,6 @@
         android:lineSpacingExtra="4dp"
         android:textAppearance="?attr/textAppearanceBodyLarge"
         android:textColor="?attr/colorOnSurfaceVariant"
-        android:fontFamily="@font/google_sans_regular" />
+        android:fontFamily="sans-serif" />
 
 </LinearLayout>
-

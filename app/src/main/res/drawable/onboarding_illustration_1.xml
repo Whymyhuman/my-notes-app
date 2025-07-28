@@ -7,10 +7,8 @@
     android:viewportHeight="240">
     
     <!-- Background gradient circle -->
-    <circle
-        android:cx="120"
-        android:cy="120"
-        android:r="100">
+    <path
+        android:pathData="M120,20 A100,100 0 1,1 120,220 A100,100 0 1,1 120,20 Z">
         <aapt:attr name="android:fillColor">
             <gradient
                 android:angle="135"
@@ -18,40 +16,33 @@
                 android:endColor="#764ba2"
                 android:type="linear" />
         </aapt:attr>
-    </circle>
+    </path>
     
     <!-- Welcome illustration - Phone with notes -->
-    <rect
-        android:width="60"
-        android:height="100"
-        android:x="90"
-        android:y="70"
-        android:rx="8"
+    <path
+        android:pathData="M98,70 L142,70 Q150,70 150,78 L150,162 Q150,170 142,170 L98,170 Q90,170 90,162 L90,78 Q90,70 98,70 Z"
         android:fillColor="#FFFFFF"
         android:strokeColor="#E0E0E0"
         android:strokeWidth="2"/>
     
     <!-- Screen content -->
-    <rect
-        android:width="50"
-        android:height="80"
-        android:x="95"
-        android:y="80"
-        android:rx="4"
+    <path
+        android:pathData="M99,80 L141,80 Q145,80 145,84 L145,156 Q145,160 141,160 L99,160 Q95,160 95,156 L95,84 Q95,80 99,80 Z"
         android:fillColor="#F8F9FA"/>
     
     <!-- Note items -->
-    <rect android:width="40" android:height="8" android:x="100" android:y="90" android:rx="2" android:fillColor="#667eea"/>
-    <rect android:width="35" android:height="6" android:x="100" android:y="102" android:rx="1" android:fillColor="#E0E0E0"/>
-    <rect android:width="38" android:height="6" android:x="100" android:y="112" android:rx="1" android:fillColor="#E0E0E0"/>
+    <path android:pathData="M102,90 L138,90 Q140,90 140,92 L140,96 Q140,98 138,98 L102,98 Q100,98 100,96 L100,92 Q100,90 102,90 Z" android:fillColor="#667eea"/>
+    <path android:pathData="M101,102 L134,102 Q135,102 135,103 L135,107 Q135,108 134,108 L101,108 Q100,108 100,107 L100,103 Q100,102 101,102 Z" android:fillColor="#E0E0E0"/>
+    <path android:pathData="M101,112 L137,112 Q138,112 138,113 L138,117 Q138,118 137,118 L101,118 Q100,118 100,117 L100,113 Q100,112 101,112 Z" android:fillColor="#E0E0E0"/>
     
-    <rect android:width="40" android:height="8" android:x="100" android:y="125" android:rx="2" android:fillColor="#764ba2"/>
-    <rect android:width="32" android:height="6" android:x="100" android:y="137" android:rx="1" android:fillColor="#E0E0E0"/>
-    <rect android:width="36" android:height="6" android:x="100" android:y="147" android:rx="1" android:fillColor="#E0E0E0"/>
+    <path android:pathData="M102,125 L138,125 Q140,125 140,127 L140,131 Q140,133 138,133 L102,133 Q100,133 100,131 L100,127 Q100,125 102,125 Z" android:fillColor="#764ba2"/>
+    <path android:pathData="M101,137 L131,137 Q132,137 132,138 L132,142 Q132,143 131,143 L101,143 Q100,143 100,142 L100,138 Q100,137 101,137 Z" android:fillColor="#E0E0E0"/>
+    <path android:pathData="M101,147 L135,147 Q136,147 136,148 L136,152 Q136,153 135,153 L101,153 Q100,153 100,152 L100,148 Q100,147 101,147 Z" android:fillColor="#E0E0E0"/>
     
     <!-- Floating elements -->
-    <circle android:cx="70" android:cy="60" android:r="8" android:fillColor="#FFD700" android:alpha="0.8"/>
-    <circle android:cx="170" android:cy="180" android:r="6" android:fillColor="#FF6B6B" android:alpha="0.8"/>
-    <circle android:cx="60" android:cy="180" android:r="5" android:fillColor="#4ECDC4" android:alpha="0.8"/>
+    <path android:pathData="M70,52 A8,8 0 1,1 70,68 A8,8 0 1,1 70,52 Z" android:fillColor="#FFD700" android:alpha="0.8"/>
+    <path android:pathData="M170,174 A6,6 0 1,1 170,186 A6,6 0 1,1 170,174 Z" android:fillColor="#FF6B6B" android:alpha="0.8"/>
+    <path android:pathData="M60,175 A5,5 0 1,1 60,185 A5,5 0 1,1 60,175 Z" android:fillColor="#4ECDC4" android:alpha="0.8"/>
     
 </vector>
+

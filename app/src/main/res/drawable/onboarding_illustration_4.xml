@@ -7,10 +7,8 @@
     android:viewportHeight="240">
     
     <!-- Background gradient circle -->
-    <circle
-        android:cx="120"
-        android:cy="120"
-        android:r="100">
+    <path
+        android:pathData="M120,20 A100,100 0 1,1 120,220 A100,100 0 1,1 120,20 Z">
         <aapt:attr name="android:fillColor">
             <gradient
                 android:angle="135"
@@ -18,94 +16,47 @@
                 android:endColor="#FF6B6B"
                 android:type="linear" />
         </aapt:attr>
-    </circle>
+    </path>
     
-    <!-- Backup illustration - Cloud with devices -->
-    <ellipse
-        android:cx="120"
-        android:cy="90"
-        android:rx="35"
-        android:ry="20"
+    <!-- Cloud sync illustration -->
+    <!-- Cloud shape -->
+    <path
+        android:pathData="M120,80 Q140,60 160,80 Q180,70 190,90 Q200,90 200,110 Q200,130 180,130 L80,130 Q60,130 60,110 Q60,90 80,90 Q90,70 110,80 Q115,75 120,80 Z"
         android:fillColor="#FFFFFF"
         android:alpha="0.9"/>
     
-    <circle android:cx="95" android:cy="85" android:r="15" android:fillColor="#FFFFFF" android:alpha="0.9"/>
-    <circle android:cx="145" android:cy="85" android:r="12" android:fillColor="#FFFFFF" android:alpha="0.9"/>
-    <circle android:cx="120" android:cy="75" android:r="18" android:fillColor="#FFFFFF" android:alpha="0.9"/>
-    
-    <!-- Cloud icon -->
-    <path
-        android:fillColor="#4ECDC4"
-        android:pathData="M110,85 Q105,80 115,80 Q120,75 125,80 Q135,78 130,85 Q135,90 125,88 Q115,92 110,85 Z"/>
-    
-    <!-- Devices -->
-    <!-- Phone -->
-    <rect
-        android:width="20"
-        android:height="35"
-        android:x="70"
-        android:y="130"
-        android:rx="4"
-        android:fillColor="#FFFFFF"
-        android:strokeColor="#E0E0E0"
-        android:strokeWidth="1"/>
-    
-    <!-- Tablet -->
-    <rect
-        android:width="30"
-        android:height="25"
-        android:x="105"
-        android:y="135"
-        android:rx="3"
-        android:fillColor="#FFFFFF"
-        android:strokeColor="#E0E0E0"
-        android:strokeWidth="1"/>
-    
-    <!-- Laptop -->
-    <rect
-        android:width="35"
-        android:height="20"
-        android:x="150"
-        android:y="140"
-        android:rx="2"
-        android:fillColor="#FFFFFF"
-        android:strokeColor="#E0E0E0"
-        android:strokeWidth="1"/>
-    
-    <!-- Connection lines -->
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="2"
-        android:strokeDasharray="5,3"
-        android:pathData="M80,130 Q100,110 120,110"
-        android:fillColor="none"
-        android:alpha="0.8"/>
-    
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="2"
-        android:strokeDasharray="5,3"
-        android:pathData="M120,135 Q120,120 120,110"
-        android:fillColor="none"
-        android:alpha="0.8"/>
-    
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="2"
-        android:strokeDasharray="5,3"
-        android:pathData="M167,140 Q140,120 120,110"
-        android:fillColor="none"
-        android:alpha="0.8"/>
-    
     <!-- Sync arrows -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M50,60 L60,55 L60,65 Z"
-        android:alpha="0.8"/>
+        android:pathData="M100,100 L120,90 L120,95 L140,95 L140,105 L120,105 L120,110 Z"
+        android:fillColor="#FFD93D"/>
     
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M190,180 L180,175 L180,185 Z"
+        android:pathData="M140,120 L120,130 L120,125 L100,125 L100,115 L120,115 L120,110 Z"
+        android:fillColor="#FF6B6B"/>
+    
+    <!-- Device icons -->
+    <!-- Phone -->
+    <path
+        android:pathData="M70,150 L90,150 Q95,150 95,155 L95,185 Q95,190 90,190 L70,190 Q65,190 65,185 L65,155 Q65,150 70,150 Z"
+        android:fillColor="#4ECDC4"
         android:alpha="0.8"/>
     
+    <!-- Tablet -->
+    <path
+        android:pathData="M110,155 L140,155 Q145,155 145,160 L145,180 Q145,185 140,185 L110,185 Q105,185 105,180 L105,160 Q105,155 110,155 Z"
+        android:fillColor="#667eea"
+        android:alpha="0.8"/>
+    
+    <!-- Laptop -->
+    <path
+        android:pathData="M155,160 L185,160 Q190,160 190,165 L190,175 Q190,180 185,180 L155,180 Q150,180 150,175 L150,165 Q150,160 155,160 Z"
+        android:fillColor="#764ba2"
+        android:alpha="0.8"/>
+    
+    <!-- Connection lines -->
+    <path android:pathData="M80,150 L110,130" android:strokeColor="#FFFFFF" android:strokeWidth="2" android:alpha="0.6"/>
+    <path android:pathData="M125,155 L130,130" android:strokeColor="#FFFFFF" android:strokeWidth="2" android:alpha="0.6"/>
+    <path android:pathData="M170,160 L150,130" android:strokeColor="#FFFFFF" android:strokeWidth="2" android:alpha="0.6"/>
+    
 </vector>
+

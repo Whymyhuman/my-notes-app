@@ -6,10 +6,8 @@
     android:viewportHeight="120">
     
     <!-- Background circle -->
-    <circle
-        android:cx="60"
-        android:cy="60"
-        android:r="50"
+    <path
+        android:pathData="M60,10 A50,50 0 1,1 60,110 A50,50 0 1,1 60,10 Z"
         android:fillColor="#F5F5F5"
         android:strokeColor="#E0E0E0"
         android:strokeWidth="2"/>
@@ -52,4 +50,3 @@
         android:pathData="M85,35 L87,37 L72,52 L70,50 Z"/>
     
 </vector>
-
