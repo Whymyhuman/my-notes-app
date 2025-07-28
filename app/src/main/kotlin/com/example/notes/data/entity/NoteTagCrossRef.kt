@@ -3,6 +3,7 @@ package com.example.notes.data.entity
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
+import com.example.notes.data.Note
 
 @Entity(
     tableName = "note_tag_cross_ref",
