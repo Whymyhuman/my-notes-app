@@ -49,12 +49,55 @@
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
     
-    <!-- Image attachments -->
+    <!-- Media attachments -->
     <string name="add_image">Add Image</string>
     <string name="remove_image">Remove Image</string>
     <string name="select_image_source">Select Image Source</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
+    <string name="add_audio">Add Audio</string>
+    <string name="record_audio">Record Audio</string>
+    <string name="choose_audio_file">Choose Audio File</string>
+    <string name="add_file">Add File</string>
+    <string name="choose_file">Choose File</string>
+    <string name="download">Download</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="recording">Recording...</string>
+    <string name="recording_stopped">Recording stopped</string>
+    
+    <!-- Search -->
+    <string name="search_notes">Search notes</string>
+    <string name="advanced_search">Advanced Search</string>
+    <string name="search_results">Search Results</string>
+    <string name="no_results_found">No results found</string>
+    <string name="search_suggestions">Suggestions</string>
+    <string name="recent_searches">Recent Searches</string>
+    <string name="clear_recent_searches">Clear Recent Searches</string>
+    <string name="filter_by_tags">Filter by Tags</string>
+    <string name="filter_by_date">Filter by Date</string>
+    <string name="filter_by_media">Filter by Media</string>
+    <string name="sort_by">Sort by</string>
+    <string name="sort_by_relevance">Relevance</string>
+    <string name="sort_by_date_created">Date Created</string>
+    <string name="sort_by_date_modified">Date Modified</string>
+    <string name="sort_by_title">Title</string>
+    <string name="sort_by_size">Size</string>
+    <string name="has_images">Has Images</string>
+    <string name="has_audio">Has Audio</string>
+    <string name="has_files">Has Files</string>
+    
+    <!-- Tags -->
+    <string name="tags">Tags</string>
+    <string name="add_tag">Add Tag</string>
+    <string name="create_tag">Create Tag</string>
+    <string name="edit_tag">Edit Tag</string>
+    <string name="delete_tag">Delete Tag</string>
+    <string name="tag_name">Tag Name</string>
+    <string name="tag_color">Tag Color</string>
+    <string name="no_tags">No tags</string>
+    <string name="popular_tags">Popular Tags</string>
     
     <!-- Reminders -->
     <string name="set_reminder">Set Reminder</string>
