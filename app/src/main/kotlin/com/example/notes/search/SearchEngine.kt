@@ -3,9 +3,9 @@ package com.example.notes.search
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.notes.data.dao.NoteDao
+import com.example.notes.data.NoteDao
 import com.example.notes.data.dao.TagDao
-import com.example.notes.data.entity.Note
+import com.example.notes.data.Note
 import com.example.notes.data.entity.Tag
 import com.example.notes.utils.TextFormattingUtils
 import kotlinx.coroutines.Dispatchers
@@ -188,7 +188,7 @@ class SearchEngine(
         }
         
         // Boost score for recent notes
-        val daysSinceCreated = (System.currentTimeMillis() - note.createdAt) / (1000 * 60 * 60 * 24)
+        val daysSinceCreated = (System.currentTimeMillis() - note.timestamp) / (1000 * 60 * 60 * 24)
         if (daysSinceCreated < 7) score += 1.0
         if (daysSinceCreated < 1) score += 2.0
         
@@ -204,8 +204,8 @@ class SearchEngine(
         val tagIds = tags.map { it.id }.toSet()
         
         return notes.filter { note ->
-            val noteTags = tagDao.getTagsForNoteSync(note.id)
-            val noteTagIds = noteTags.map { it.id }.toSet()
+            val noteTags = tagDao.getTagsForNoteSync(note.id.toLong())
+            val noteTagIds = noteTags.map { tag -> tag.id }.toSet()
             
             // Note must have all specified tags
             tagIds.all { tagId -> tagId in noteTagIds }
@@ -217,10 +217,10 @@ class SearchEngine(
      */
     private fun filterByDateRange(notes: List<Note>, dateFrom: Date?, dateTo: Date?): List<Note> {
         return notes.filter { note ->
-            val noteDate = Date(note.createdAt)
+            val noteDate = Date(note.timestamp)
             
-            val afterFrom = dateFrom?.let { noteDate >= it } ?: true
-            val beforeTo = dateTo?.let { noteDate <= it } ?: true
+            val afterFrom: Boolean = dateFrom?.let { noteDate >= it } ?: true
+            val beforeTo: Boolean = dateTo?.let { noteDate <= it } ?: true
             
             afterFrom && beforeTo
         }
@@ -237,15 +237,17 @@ class SearchEngine(
     ): List<Note> {
         return notes.filter { note ->
             val imageMatch = hasImages?.let { 
-                if (it) note.imagePaths.isNotEmpty() else note.imagePaths.isEmpty()
+                if (it) !note.imagePaths.isNullOrEmpty() else note.imagePaths.isNullOrEmpty()
             } ?: true
             
             val audioMatch = hasAudio?.let {
-                if (it) note.audioPaths.isNotEmpty() else note.audioPaths.isEmpty()
+                // Note: Audio paths not implemented in current Note model
+                false
             } ?: true
             
             val fileMatch = hasFiles?.let {
-                if (it) note.filePaths.isNotEmpty() else note.filePaths.isEmpty()
+                // Note: File paths not implemented in current Note model
+                false
             } ?: true
             
             imageMatch && audioMatch && fileMatch
@@ -267,11 +269,11 @@ class SearchEngine(
                     val searchTerms = query.lowercase().split(" ").filter { it.isNotBlank() }
                     notes.sortedByDescending { calculateRelevanceScore(it, searchTerms) }
                 } else {
-                    notes.sortedByDescending { it.updatedAt }
+                    notes.sortedByDescending { it.timestamp }
                 }
             }
-            SortBy.DATE_CREATED -> notes.sortedBy { it.createdAt }
-            SortBy.DATE_MODIFIED -> notes.sortedBy { it.updatedAt }
+            SortBy.DATE_CREATED -> notes.sortedBy { it.timestamp }
+            SortBy.DATE_MODIFIED -> notes.sortedBy { it.timestamp }
             SortBy.TITLE -> notes.sortedBy { it.title.lowercase() }
             SortBy.SIZE -> notes.sortedBy { it.content.length }
         }

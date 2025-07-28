@@ -1,7 +1,7 @@
 package com.example.notes.templates
 
 import android.content.Context
-import com.example.notes.data.entity.Note
+import com.example.notes.data.Note
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
@@ -86,8 +86,8 @@ class TemplateManager(private val context: Context) {
         Note(
             title = processedTitle,
             content = processedContent,
-            createdAt = currentTime,
-            updatedAt = currentTime
+            timestamp = currentTime,
+            isPinned = false
         )
     }
     

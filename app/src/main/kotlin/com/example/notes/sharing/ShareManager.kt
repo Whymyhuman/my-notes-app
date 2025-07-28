@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.core.content.FileProvider
-import com.example.notes.data.entity.Note
+import com.example.notes.data.Note
 import com.example.notes.export.ExportManager
 import com.example.notes.utils.TextFormattingUtils
 import kotlinx.coroutines.Dispatchers
@@ -258,7 +258,7 @@ class ShareManager(
         
         if (options.includeTimestamp) {
             content.append("\n\n")
-            content.append("Created: ${java.text.SimpleDateFormat("MMM dd, yyyy HH:mm", java.util.Locale.getDefault()).format(java.util.Date(note.createdAt))}")
+            content.append("Created: ${java.text.SimpleDateFormat("MMM dd, yyyy HH:mm", java.util.Locale.getDefault()).format(java.util.Date(note.timestamp))}")
         }
         
         return content.toString()

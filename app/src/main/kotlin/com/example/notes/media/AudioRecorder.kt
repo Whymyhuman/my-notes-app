@@ -25,7 +25,7 @@ class AudioRecorder(private val context: Context) {
     private var mediaPlayer: MediaPlayer? = null
     private var currentRecordingFile: File? = null
     private var isRecording = false
-    private var isPlaying = false
+    private var _isPlaying = false
     
     private val tempDir = File(context.cacheDir, "temp_audio")
     
@@ -138,7 +138,7 @@ class AudioRecorder(private val context: Context) {
      */
     suspend fun playAudio(filePath: String, onCompletion: (() -> Unit)? = null): Result<Boolean> = withContext(Dispatchers.IO) {
         try {
-            if (isPlaying) {
+            if (_isPlaying) {
                 stopPlayback()
             }
             
@@ -150,25 +150,25 @@ class AudioRecorder(private val context: Context) {
             mediaPlayer = MediaPlayer().apply {
                 setDataSource(filePath)
                 setOnCompletionListener {
-                    isPlaying = false
+                    _isPlaying = false
                     onCompletion?.invoke()
                 }
                 setOnErrorListener { _, what, extra ->
                     Log.e(TAG, "MediaPlayer error: what=$what, extra=$extra")
-                    isPlaying = false
+                    _isPlaying = false
                     true
                 }
                 prepare()
                 start()
             }
             
-            isPlaying = true
+            _isPlaying = true
             Log.d(TAG, "Started playing: $filePath")
             
             Result.success(true)
         } catch (e: Exception) {
             Log.e(TAG, "Error playing audio", e)
-            isPlaying = false
+            _isPlaying = false
             Result.failure(e)
         }
     }
@@ -185,7 +185,7 @@ class AudioRecorder(private val context: Context) {
                 release()
             }
             mediaPlayer = null
-            isPlaying = false
+            _isPlaying = false
             Log.d(TAG, "Playback stopped")
         } catch (e: Exception) {
             Log.e(TAG, "Error stopping playback", e)
@@ -200,7 +200,7 @@ class AudioRecorder(private val context: Context) {
             mediaPlayer?.apply {
                 if (isPlaying()) {
                     pause()
-                    isPlaying = false
+                    _isPlaying = false
                     Log.d(TAG, "Playback paused")
                 }
             }
@@ -217,7 +217,7 @@ class AudioRecorder(private val context: Context) {
             mediaPlayer?.apply {
                 if (!isPlaying()) {
                     start()
-                    isPlaying = true
+                    _isPlaying = true
                     Log.d(TAG, "Playback resumed")
                 }
             }
@@ -296,7 +296,7 @@ class AudioRecorder(private val context: Context) {
     /**
      * Check if currently playing
      */
-    fun isPlaying(): Boolean = isPlaying
+    fun isPlaying(): Boolean = _isPlaying
     
     /**
      * Clean up resources
@@ -312,7 +312,7 @@ class AudioRecorder(private val context: Context) {
                 isRecording = false
             }
             
-            if (isPlaying) {
+            if (_isPlaying) {
                 stopPlayback()
             }
             

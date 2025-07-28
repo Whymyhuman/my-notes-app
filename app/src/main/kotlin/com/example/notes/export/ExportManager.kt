@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Paint
 import android.graphics.pdf.PdfDocument
 import android.util.Log
-import com.example.notes.data.entity.Note
+import com.example.notes.data.Note
 import com.example.notes.utils.TextFormattingUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -42,8 +42,8 @@ class ExportManager(private val context: Context) {
         try {
             val pdfDocument = PdfDocument()
             val pageInfo = PdfDocument.PageInfo.Builder(PDF_PAGE_WIDTH, PDF_PAGE_HEIGHT, 1).create()
-            val page = pdfDocument.startPage(pageInfo)
-            val canvas = page.canvas
+            var page = pdfDocument.startPage(pageInfo)
+            var canvas = page.canvas
             
             // Set up paint for text
             val titlePaint = Paint().apply {
@@ -70,7 +70,7 @@ class ExportManager(private val context: Context) {
             
             // Draw metadata
             val dateFormat = SimpleDateFormat("MMM dd, yyyy HH:mm", Locale.getDefault())
-            val createdDate = dateFormat.format(Date(note.createdAt))
+            val createdDate = dateFormat.format(Date(note.timestamp))
             canvas.drawText("Created: $createdDate", PDF_MARGIN.toFloat(), yPosition, metaPaint)
             yPosition += 30f
             
@@ -83,8 +83,8 @@ class ExportManager(private val context: Context) {
                     // Start new page if needed
                     pdfDocument.finishPage(page)
                     val newPageInfo = PdfDocument.PageInfo.Builder(PDF_PAGE_WIDTH, PDF_PAGE_HEIGHT, 1).create()
-                    val newPage = pdfDocument.startPage(newPageInfo)
-                    canvas = newPage.canvas
+                    page = pdfDocument.startPage(newPageInfo)
+                    canvas = page.canvas
                     yPosition = PDF_MARGIN + 20f
                 }
                 
@@ -143,8 +143,8 @@ class ExportManager(private val context: Context) {
         
         try {
             val dateFormat = SimpleDateFormat("MMM dd, yyyy HH:mm", Locale.getDefault())
-            val createdDate = dateFormat.format(Date(note.createdAt))
-            val updatedDate = dateFormat.format(Date(note.updatedAt))
+            val createdDate = dateFormat.format(Date(note.timestamp))
+            val updatedDate = dateFormat.format(Date(note.timestamp))
             
             val htmlContent = buildString {
                 append("<!DOCTYPE html>\n")
@@ -199,8 +199,8 @@ class ExportManager(private val context: Context) {
         
         try {
             val dateFormat = SimpleDateFormat("MMM dd, yyyy HH:mm", Locale.getDefault())
-            val createdDate = dateFormat.format(Date(note.createdAt))
-            val updatedDate = dateFormat.format(Date(note.updatedAt))
+            val createdDate = dateFormat.format(Date(note.timestamp))
+            val updatedDate = dateFormat.format(Date(note.timestamp))
             
             val markdownContent = buildString {
                 append("# ${note.title}\n\n")
@@ -226,7 +226,7 @@ class ExportManager(private val context: Context) {
                     note.content
                 }
                 
-                append(content)
+                append(content.toString())
                 append("\n\n---\n")
                 append("*Exported from My Notes App*")
             }
@@ -250,8 +250,8 @@ class ExportManager(private val context: Context) {
         
         try {
             val dateFormat = SimpleDateFormat("MMM dd, yyyy HH:mm", Locale.getDefault())
-            val createdDate = dateFormat.format(Date(note.createdAt))
-            val updatedDate = dateFormat.format(Date(note.updatedAt))
+            val createdDate = dateFormat.format(Date(note.timestamp))
+            val updatedDate = dateFormat.format(Date(note.timestamp))
             
             val textContent = buildString {
                 append("${note.title}\n")
@@ -352,7 +352,7 @@ class ExportManager(private val context: Context) {
                 append("${index + 1}. ${note.title}\n")
                 append("-".repeat(note.title.length + 3))
                 append("\n")
-                append("Created: ${SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(note.createdAt))}\n\n")
+                append("Created: ${SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(note.timestamp))}\n\n")
                 append(TextFormattingUtils.extractPlainText(note.content))
                 append("\n\n")
                 if (index < notes.size - 1) {
@@ -374,7 +374,7 @@ class ExportManager(private val context: Context) {
             
             notes.forEach { note ->
                 append("## ${note.title}\n\n")
-                append("**Created:** ${SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(note.createdAt))}\n\n")
+                append("**Created:** ${SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(note.timestamp))}\n\n")
                 append("${note.content}\n\n")
                 append("---\n\n")
             }
@@ -395,7 +395,7 @@ class ExportManager(private val context: Context) {
             
             notes.forEach { note ->
                 append("<h2>${escapeHtml(note.title)}</h2>\n")
-                append("<p><em>Created: ${SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(note.createdAt))}</em></p>\n")
+                append("<p><em>Created: ${SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(note.timestamp))}</em></p>\n")
                 append("<div>${escapeHtml(TextFormattingUtils.extractPlainText(note.content))}</div>\n")
                 append("<hr>\n")
             }
