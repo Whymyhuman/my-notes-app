@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">My Notes</string>
+    <string name="app_name">QuickNotes Pro</string>
     <string name="search_notes">Search notes…</string>
     <string name="new_note">New Note</string>
     <string name="pinned">Pinned</string>
@@ -19,6 +19,9 @@
     <string name="time_ago_now">now</string>
     <string name="empty_notes">No notes yet</string>
     <string name="empty_notes_subtitle">Tap the + button to create your first note</string>
+    <string name="empty_notes_title">Start Writing!</string>
+    <string name="create_first_note">Create Your First Note</string>
+    <string name="loading_notes">Loading your notes…</string>
     
     <!-- Trash related strings -->
     <string name="trash_count">%d items in trash</string>
@@ -55,5 +58,11 @@
     <string name="share_note">Share Note</string>
     <string name="export_successful">Note exported successfully</string>
     
+    <!-- Onboarding -->
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="get_started">Get Started</string>
+    <string name="onboarding_illustration">Onboarding illustration</string>
+    
 </resources>
-

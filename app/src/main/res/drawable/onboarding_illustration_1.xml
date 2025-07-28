@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+    
+    <!-- Background gradient circle -->
+    <circle
+        android:cx="120"
+        android:cy="120"
+        android:r="100">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:angle="135"
+                android:startColor="#667eea"
+                android:endColor="#764ba2"
+                android:type="linear" />
+        </aapt:attr>
+    </circle>
+    
+    <!-- Welcome illustration - Phone with notes -->
+    <rect
+        android:width="60"
+        android:height="100"
+        android:x="90"
+        android:y="70"
+        android:rx="8"
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#E0E0E0"
+        android:strokeWidth="2"/>
+    
+    <!-- Screen content -->
+    <rect
+        android:width="50"
+        android:height="80"
+        android:x="95"
+        android:y="80"
+        android:rx="4"
+        android:fillColor="#F8F9FA"/>
+    
+    <!-- Note items -->
+    <rect android:width="40" android:height="8" android:x="100" android:y="90" android:rx="2" android:fillColor="#667eea"/>
+    <rect android:width="35" android:height="6" android:x="100" android:y="102" android:rx="1" android:fillColor="#E0E0E0"/>
+    <rect android:width="38" android:height="6" android:x="100" android:y="112" android:rx="1" android:fillColor="#E0E0E0"/>
+    
+    <rect android:width="40" android:height="8" android:x="100" android:y="125" android:rx="2" android:fillColor="#764ba2"/>
+    <rect android:width="32" android:height="6" android:x="100" android:y="137" android:rx="1" android:fillColor="#E0E0E0"/>
+    <rect android:width="36" android:height="6" android:x="100" android:y="147" android:rx="1" android:fillColor="#E0E0E0"/>
+    
+    <!-- Floating elements -->
+    <circle android:cx="70" android:cy="60" android:r="8" android:fillColor="#FFD700" android:alpha="0.8"/>
+    <circle android:cx="170" android:cy="180" android:r="6" android:fillColor="#FF6B6B" android:alpha="0.8"/>
+    <circle android:cx="60" android:cy="180" android:r="5" android:fillColor="#4ECDC4" android:alpha="0.8"/>
+    
+</vector>
+

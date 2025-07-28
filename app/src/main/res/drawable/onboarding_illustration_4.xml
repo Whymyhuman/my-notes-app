@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+    
+    <!-- Background gradient circle -->
+    <circle
+        android:cx="120"
+        android:cy="120"
+        android:r="100">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:angle="135"
+                android:startColor="#FFD93D"
+                android:endColor="#FF6B6B"
+                android:type="linear" />
+        </aapt:attr>
+    </circle>
+    
+    <!-- Backup illustration - Cloud with devices -->
+    <ellipse
+        android:cx="120"
+        android:cy="90"
+        android:rx="35"
+        android:ry="20"
+        android:fillColor="#FFFFFF"
+        android:alpha="0.9"/>
+    
+    <circle android:cx="95" android:cy="85" android:r="15" android:fillColor="#FFFFFF" android:alpha="0.9"/>
+    <circle android:cx="145" android:cy="85" android:r="12" android:fillColor="#FFFFFF" android:alpha="0.9"/>
+    <circle android:cx="120" android:cy="75" android:r="18" android:fillColor="#FFFFFF" android:alpha="0.9"/>
+    
+    <!-- Cloud icon -->
+    <path
+        android:fillColor="#4ECDC4"
+        android:pathData="M110,85 Q105,80 115,80 Q120,75 125,80 Q135,78 130,85 Q135,90 125,88 Q115,92 110,85 Z"/>
+    
+    <!-- Devices -->
+    <!-- Phone -->
+    <rect
+        android:width="20"
+        android:height="35"
+        android:x="70"
+        android:y="130"
+        android:rx="4"
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#E0E0E0"
+        android:strokeWidth="1"/>
+    
+    <!-- Tablet -->
+    <rect
+        android:width="30"
+        android:height="25"
+        android:x="105"
+        android:y="135"
+        android:rx="3"
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#E0E0E0"
+        android:strokeWidth="1"/>
+    
+    <!-- Laptop -->
+    <rect
+        android:width="35"
+        android:height="20"
+        android:x="150"
+        android:y="140"
+        android:rx="2"
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#E0E0E0"
+        android:strokeWidth="1"/>
+    
+    <!-- Connection lines -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeDasharray="5,3"
+        android:pathData="M80,130 Q100,110 120,110"
+        android:fillColor="none"
+        android:alpha="0.8"/>
+    
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeDasharray="5,3"
+        android:pathData="M120,135 Q120,120 120,110"
+        android:fillColor="none"
+        android:alpha="0.8"/>
+    
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeDasharray="5,3"
+        android:pathData="M167,140 Q140,120 120,110"
+        android:fillColor="none"
+        android:alpha="0.8"/>
+    
+    <!-- Sync arrows -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,60 L60,55 L60,65 Z"
+        android:alpha="0.8"/>
+    
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M190,180 L180,175 L180,185 Z"
+        android:alpha="0.8"/>
+    
+</vector>
+
