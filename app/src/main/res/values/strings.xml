@@ -105,10 +105,41 @@
     <string name="reminder_set">Reminder set</string>
     <string name="reminder_removed">Reminder removed</string>
     
+    <!-- Templates -->
+    <string name="templates">Templates</string>
+    <string name="choose_template">Choose Template</string>
+    <string name="create_from_template">Create from Template</string>
+    <string name="custom_templates">Custom Templates</string>
+    <string name="productivity">Productivity</string>
+    <string name="personal">Personal</string>
+    <string name="business">Business</string>
+    <string name="education">Education</string>
+    <string name="creative">Creative</string>
+    <string name="meeting_notes">Meeting Notes</string>
+    <string name="todo_list">To-Do List</string>
+    <string name="daily_journal">Daily Journal</string>
+    <string name="project_planning">Project Planning</string>
+    <string name="goal_setting">Goal Setting</string>
+    <string name="book_review">Book Review</string>
+    <string name="lecture_notes">Lecture Notes</string>
+    <string name="story_outline">Story Outline</string>
+    <string name="client_meeting">Client Meeting</string>
+    
     <!-- Export/Share -->
     <string name="export_pdf">Export as PDF</string>
+    <string name="export_html">Export as HTML</string>
+    <string name="export_markdown">Export as Markdown</string>
+    <string name="export_text">Export as Text</string>
     <string name="share_note">Share Note</string>
+    <string name="share_as_text">Share as Text</string>
+    <string name="share_as_file">Share as File</string>
+    <string name="share_via_email">Share via Email</string>
+    <string name="share_via_social">Share on Social Media</string>
     <string name="export_successful">Note exported successfully</string>
+    <string name="export_failed">Export failed</string>
+    <string name="share_successful">Note shared successfully</string>
+    <string name="choose_sharing_app">Choose sharing app</string>
+    <string name="no_sharing_apps">No sharing apps available</string>
     
     <!-- Onboarding -->
     <string name="skip">Skip</string>

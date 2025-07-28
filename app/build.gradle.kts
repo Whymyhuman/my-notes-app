@@ -73,6 +73,9 @@ dependencies {
     // ViewPager2 for onboarding
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     
+    // FlexboxLayout for tags
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
+    
     // CardView
     implementation("androidx.cardview:cardview:1.0.0")
     
