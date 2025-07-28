@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="240dp"
     android:height="240dp"
     android:viewportWidth="240"
@@ -62,4 +63,3 @@
     <text android:x="60" android:y="190" android:text="U" android:textSize="12" android:fillColor="#FFFFFF" android:fontFamily="serif"/>
     
 </vector>
-
